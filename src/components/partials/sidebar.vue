@@ -2,15 +2,20 @@
     <section>
         <div>
             <!-- search  -->
-            <!-- playlists -->
+            <playlist-component/>
             <!-- player -->
         </div>
     </section>
 </template>
 
 <script>
-export default {
+import PlaylistComponent from '../PlaylistComponent'
 
+export default {
+    name: 'Sidebar',
+    components: {
+        PlaylistComponent
+    }
 }
 </script>
 
