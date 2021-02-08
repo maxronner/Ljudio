@@ -1,8 +1,9 @@
 <template>
   <div >
-  <vs-button @click="active=!active">
+  <!-- <vs-button @click="active=!active">
         Open Dialog
-      </vs-button> 
+      </vs-button>  -->
+      <welcome></welcome>
   <vs-dialog v-model="active">
   <div>
    <iframe id="ytplayer" type="text/html" width="720" height="405"
@@ -14,10 +15,11 @@ frameborder="0" allowfullscreen></iframe>
 </template>
 
 <script>
+import welcome from '../components/Welcome'
 export default {
   name: 'HelloWorld',
   components:{
-
+    welcome
   },
   props: {
     msg: String
