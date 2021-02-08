@@ -1,10 +1,16 @@
 <template>
     <section>
-        <div>
-            <!-- search  -->
+        <vs-sidebar
+        absolute
+        open
+        >
+        <template #logo>
+          <!-- ...img logo -->
+        </template>
+        <vs-sidebar-item id="home">
             <playlist-component/>
-            <!-- player -->
-        </div>
+        </vs-sidebar-item>
+      </vs-sidebar>
     </section>
 </template>
 
