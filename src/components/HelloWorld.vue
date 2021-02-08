@@ -2,7 +2,7 @@
   <div >
   <vs-button @click="active=!active">
         Open Dialog
-      </vs-button>
+      </vs-button> 
   <vs-dialog v-model="active">
   <div>
    <iframe id="ytplayer" type="text/html" width="720" height="405"
