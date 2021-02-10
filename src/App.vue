@@ -1,8 +1,21 @@
 <template>
   <div id="app">
       <div class="grid">
-      <vs-row id="main">
-        <router-view/>
+      <vs-row id="main" style="width:100%">
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2" style="height:100%;">
+          <!-- SIDEBAR -->
+           <vs-sidebar id="sidebar"
+        absolute
+        square
+        v-model="active"
+        open
+        >
+           </vs-sidebar>
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
+          <router-view/>
+        </vs-col>
+       
       </vs-row>
     </div>
 
@@ -19,7 +32,9 @@
   background-color: #262729;
  
 }
-
+#sidebar{
+  background-color:#18181a
+}
 #main{
   height: 100vh;
   width: 100vh;
