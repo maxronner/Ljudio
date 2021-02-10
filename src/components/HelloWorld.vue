@@ -28,15 +28,27 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
     <v-tour name="myTour" :steps="steps"></v-tour>
+    <search/>
+    <player/>
   </div>
 </template>
 
 <script>
+import search from '../components/search' 
+import player from '../components/player' 
+
 export default {
   name: 'HelloWorld',
   props: {
+    
     msg: String
   },
+  components:{
+   player,
+    search
+
+  },
+ 
       data () {
       return {
         steps: [
