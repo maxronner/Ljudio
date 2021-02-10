@@ -1,4 +1,17 @@
 <template>
+  <div >
+  <!-- <vs-button @click="active=!active">
+        Open Dialog
+      </vs-button>  -->
+      <welcome></welcome>
+  <vs-dialog v-model="active">
+  <div>
+   <iframe id="ytplayer" type="text/html" width="720" height="405"
+src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&disablekb=1&enablejsapi=1&loop=1&iv_load_policy=3"
+frameborder="0" allowfullscreen></iframe>
+  </div>
+</vs-dialog>
+
   <div class="hello">
     <h1 id="v-step-0" >{{ msg }}</h1>
     <p>
@@ -33,6 +46,8 @@
 </template>
 
 <script>
+
+import welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Register from '../components/Register'
 export default {
@@ -42,10 +57,14 @@ export default {
   },
   components: {
     Login,
-    Register
+    Register,
+    welcome
   },
       data () {
       return {
+        active: false,
+        num: 2,
+          num2: 10,
         steps: [
           {
             target: '#v-step-0',  // We're using document.querySelector() under the hood
