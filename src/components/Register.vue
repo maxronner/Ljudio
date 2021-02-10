@@ -3,7 +3,7 @@
 
     <div class="center">
 
-      <vs-button @click="active=!active" id="registerButton">
+      <vs-button @click="active=!active" id="registerButton" style="width:113px;">
         Registrera dig
       </vs-button>
 
