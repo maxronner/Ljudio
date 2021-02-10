@@ -27,20 +27,22 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    <Login></Login>
+    <Register></Register>
     <v-tour name="myTour" :steps="steps"></v-tour>
   </div>
 </template>
 
 <script>
 import Login from '../components/Login'
+import Register from '../components/Register'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   components: {
-    Login
+    Login,
+    Register
   },
       data () {
       return {
