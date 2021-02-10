@@ -6,19 +6,22 @@
   >
   Add Playlist
   </vs-button>
-  <vs-table>
-    <template #tbody>
-      <vs-tr
-        :key="i"
-        v-for="(tr, i) in playlists"
-        :data="tr"
-      >
-        <vs-td>
-          {{ tr.name }}
-        </vs-td>
-      </vs-tr>
-    </template>
-  </vs-table>
+  <div>
+    <table>
+      <template>
+        <vs-tr
+          :key="i"
+          v-for="(tr, i) in playlists"
+          :data="tr"
+        >
+          <vs-td>
+            {{ tr.name }}
+          </vs-td>
+        </vs-tr>
+      </template>
+    </table>
+
+  </div>
 </section>
 </template>
 
