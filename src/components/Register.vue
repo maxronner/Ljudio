@@ -3,8 +3,8 @@
 
     <div class="center">
 
-      <vs-button @click="active=!active">
-        Registrera dig!
+      <vs-button @click="active=!active" id="registerButton">
+        Registrera dig
       </vs-button>
 
       <vs-dialog v-model="active">
@@ -96,6 +96,11 @@
 
     #popup{
         background-color:#262729;
+    }
+
+    #registerButton{
+      background-color: #42b983;
+      color: black;
     }
 </style>
         

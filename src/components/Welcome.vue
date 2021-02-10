@@ -1,7 +1,7 @@
 <template>
   <div id="Main" style="width:100vw;">
       <div class="Grid">
-            <vs-row style="width:100vw; height:45vh; margon:0 auto; margin-top:10%;">
+            <vs-row style="width:100vw; height:35vh; margon:0 auto; margin-top:10%;">
         <vs-col offset="3" w="6" style="text-align:center; ">
          
          <vs-col  >

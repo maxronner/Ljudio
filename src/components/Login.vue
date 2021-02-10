@@ -1,7 +1,7 @@
 <template>
     <div>
-      <vs-button @click="active=!active">
-        Open Dialog
+      <vs-button @click="active=!active" id="loginButton">
+        Logga in
       </vs-button>
       <vs-dialog v-model="active">
         <template #header>           
@@ -70,5 +70,9 @@ data:() => ({
     }
     #popup{
         background-color:#262729;
+    }
+    #loginButton{
+      background-color: #42b983;
+      color: black;
     }
 </style>
