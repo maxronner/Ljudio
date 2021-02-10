@@ -14,22 +14,22 @@
         <div>
           <vs-input class="email-input" block v-model="email" placeholder="Email">
           </vs-input>
-          <vs-input class="password-input" block type="password" v-model="password" placeholder="Password">
+          <vs-input class="password-input" block type="password" v-model="password" placeholder="Lösenord">
           </vs-input>
           <div class="flex">
-            <vs-checkbox v-model="remember">Remember me</vs-checkbox>
-            <a class="forgotpassword" href="#">Forgot Password?</a>
+            <vs-checkbox v-model="remember">Kom ihåg mig</vs-checkbox>
+            <a class="forgotpassword" href="#">Glömt lösenord?</a>
           </div>
         </div>
 
         <template #footer>
           <div class="footer-dialog">
             <vs-button block>
-              Sign In
+              Logga in
             </vs-button>
 
             <div class="createaccount">
-              New Here? <a href="#">Create New Account</a>
+              Ny här? <a href="#">Skapa ett konto</a>
             </div>
           </div>
         </template>
