@@ -16,8 +16,10 @@
 </template>
 
 <script>
-
+//import Router from 'vue-router'
 import Welcome from '../components/Welcome'
+// eslint-disable-next-line no-unused-vars
+import test from '../components/Login'
 import Login from '../components/Login'
 import Register from '../components/Register'
 export default {
@@ -55,7 +57,12 @@ export default {
       }
     },
      mounted: function () {
-      this.$tours['myTour'].start()
+      //this.$tours['myTour'].start();
+       console.log("test");
+      //if(window.LoggedIn){
+        //console.log("test")
+       // Router.push('test')
+      //}
     }
 }
 </script>
