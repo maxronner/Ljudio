@@ -6,11 +6,15 @@
   <vs-row style="justify-content: center;">
     <Register></Register>
     <Login></Login>
+
+
   </vs-row>
+  
+
 
   <SearchResults></SearchResults>
 </div>
-
+  
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
@@ -21,19 +25,28 @@
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Register from '../components/Register'
+
+
+
 import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
+    
     msg: String
   },
+ 
+ 
   components: {
     Login,
     Register,
     Welcome,
+    
+    
     SearchResults
   },
-      data () {
+   
+       data () {
       return {
         active: false,
         num: 2,
