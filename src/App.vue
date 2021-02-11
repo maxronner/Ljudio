@@ -2,7 +2,7 @@
   <div id="app">
       <div class="grid">
       <vs-row id="main" style="width:100%">
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2" style="height:100%;">
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w=2 style="height:100%;">
           <!-- SIDEBAR -->
            <vs-sidebar id="sidebar"
         absolute
@@ -12,7 +12,7 @@
         >
            </vs-sidebar>
         </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
+        <vs-col vs-type="flex" vs-justify="center" style="height:100%; margin-left:2.5%" vs-align="center"  w="9" >
           <router-view/>
         </vs-col>
        
@@ -21,6 +21,13 @@
 
   </div>
 </template>
+<script>
+export default {
+     mounted: function () {
+       window.LoggedIn = true;
+     }
+}
+</script>
 
 <style>
 #app {
@@ -33,7 +40,8 @@
  
 }
 #sidebar{
-  background-color:#18181a
+  background-color:#18181a;
+  width:120%
 }
 #main{
   height: 100vh;
