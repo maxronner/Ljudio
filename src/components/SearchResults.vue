@@ -20,15 +20,6 @@
             v-for="(tr, i) in $vs.getSearch(users, search)"
             :data="tr"
           >
-<<<<<<< HEAD
-            <vs-td>
-              {{ tr.song }}
-            </vs-td>
-            <vs-td>
-            {{ tr.album }}
-            </vs-td>
-            <vs-td>
-=======
             <vs-td style="text-align:left">
               {{ tr.song }}
             </vs-td>
@@ -36,7 +27,6 @@
             {{ tr.album }}
             </vs-td>
             <vs-td style="text-align:left">
->>>>>>> WelcomeComponent
             {{ tr.artist }}
             </vs-td>
           </vs-tr>
@@ -83,8 +73,5 @@
             background-color:  #262729;
             color: #42b983;
         }
-<<<<<<< HEAD
-=======
         
->>>>>>> WelcomeComponent
     </style>
