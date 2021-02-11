@@ -10,6 +10,12 @@
         v-model="active"
         open
         >
+
+        <search></search>
+        <player></player>
+
+            <playlist-component/>
+
            </vs-sidebar>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" style="height:100%; margin-left:2.5%" vs-align="center"  w="9" >
@@ -28,6 +34,28 @@ export default {
      }
 }
 </script>
+
+<script>
+
+import player from './components/player'
+import search from './components/search'
+import PlaylistComponent from './components/PlaylistComponent'
+export default {
+   components: {
+     player,
+    search,
+PlaylistComponent
+   }
+
+}
+</script>
+
+
+
+
+
+
+
 
 <style>
 #app {
@@ -54,12 +82,10 @@ body{
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
