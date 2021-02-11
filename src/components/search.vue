@@ -1,10 +1,10 @@
 <template>
   <div class="search">
-    <div class="centerx icons-example">
+    
     <vs-input   placeholder="Search" v-model="value1"/>
     <div class="center examplex">
      
-    </div>
+    
 
 
     
@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style scoped>
-
+.search{
+  margin-left: 20px;
+}
 </style>

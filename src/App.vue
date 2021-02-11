@@ -10,6 +10,8 @@
         v-model="active"
         open
         >
+        <search></search>
+        <player></player>
            </vs-sidebar>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
@@ -21,6 +23,20 @@
 
   </div>
 </template>
+
+<script>
+import player from './components/player'
+import search from './components/search'
+export default {
+   components: {
+     player,
+    search
+
+   }
+
+}
+</script>
+
 
 <style>
 #app {

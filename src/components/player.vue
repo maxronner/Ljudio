@@ -12,7 +12,7 @@
     </div>  -->
 
     <div class="slider">
-      <vue-slider v-model="value" width="170px" />
+      <vue-slider v-model="value" width="200px" />
     </div>
 
 
@@ -58,7 +58,12 @@ export default {
 
 .button-group{
   float: left;
+  margin-left: 20px;
  
+}
+.slider{
+  margin-top: 200px;
+  margin-left: 20px;
 }
 
 

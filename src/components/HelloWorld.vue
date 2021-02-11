@@ -14,10 +14,7 @@
 
   <SearchResults></SearchResults>
 </div>
-  <div>
-   <search></search>
-  <player></player>
-  </div>
+  
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
@@ -28,8 +25,7 @@
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Register from '../components/Register'
-import player from '../components/player'
-import search from '../components/search'
+
 
 
 import SearchResults from '../components/SearchResults'
@@ -45,8 +41,7 @@ export default {
     Login,
     Register,
     Welcome,
-    player,
-    search,
+    
     
     SearchResults
   },
