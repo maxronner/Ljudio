@@ -10,8 +10,12 @@
         v-model="active"
         open
         >
+
         <search></search>
         <player></player>
+
+            <playlist-component/>
+
            </vs-sidebar>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
@@ -25,17 +29,25 @@
 </template>
 
 <script>
+
 import player from './components/player'
 import search from './components/search'
+import PlaylistComponent from './components/PlaylistComponent'
 export default {
    components: {
      player,
-    search
-
+    search,
+PlaylistComponent
    }
 
 }
 </script>
+
+
+
+
+
+
 
 
 <style>
