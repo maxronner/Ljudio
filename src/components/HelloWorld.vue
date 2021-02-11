@@ -12,8 +12,8 @@
   
 </div>
   <div>
-   <search><search/>
-  <player><player/>
+   <search></search>
+  <player></player>
   </div>
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 

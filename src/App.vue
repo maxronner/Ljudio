@@ -1,17 +1,9 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> 
-     
-
-=======
       <div class="grid">
       <vs-row id="main">
         <router-view/>
       </vs-row>
->>>>>>> dev
     </div>
 
   </div>
@@ -27,7 +19,6 @@
   background-color: #262729;
  
 }
-
 #main{
   height: 100vh;
   width: 100vh;
@@ -39,12 +30,10 @@ body{
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
