@@ -10,6 +10,7 @@
         v-model="active"
         open
         >
+            <playlist-component/>
            </vs-sidebar>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
@@ -21,6 +22,15 @@
 
   </div>
 </template>
+
+<script>
+import PlaylistComponent from './components/PlaylistComponent'
+export default {
+  components:{
+    PlaylistComponent
+  }
+}
+</script>
 
 <style>
 #app {
