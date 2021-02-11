@@ -1,6 +1,6 @@
 <template>
     <div>
-      <vs-button @click="active=!active" id="loginButton">
+      <vs-button @click="active=!active" id="loginButton" style="width:113px;">
         Logga in
       </vs-button>
       <vs-dialog v-model="active">

@@ -10,6 +10,9 @@
 
   </vs-row>
   
+
+
+  <SearchResults></SearchResults>
 </div>
   <div>
    <search></search>
@@ -29,6 +32,7 @@ import player from '../components/player'
 import search from '../components/search'
 
 
+import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
@@ -42,8 +46,9 @@ export default {
     Register,
     Welcome,
     player,
-    search
+    search,
     
+    SearchResults
   },
    
        data () {
