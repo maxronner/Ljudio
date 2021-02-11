@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld'
 import test from '../components/Login'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,6 +12,7 @@ const routes = [
     name: 'HelloWorld',
     component: HelloWorld
   },
+
   {
     path: '/test',
     name: 'test',

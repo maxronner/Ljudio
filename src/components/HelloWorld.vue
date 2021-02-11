@@ -9,7 +9,7 @@
 
   </vs-row>
 </div>
-
+  
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
@@ -22,17 +22,26 @@ import Welcome from '../components/Welcome'
 import test from '../components/Login'
 import Login from '../components/Login'
 import Register from '../components/Register'
+
+
+
+//import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
+    
     msg: String
   },
+ 
+ 
   components: {
     Login,
     Register,
-    Welcome
+    Welcome,
+    //SearchResults
   },
-      data () {
+   
+       data () {
       return {
         active: false,
         num: 2,
