@@ -6,8 +6,9 @@
   <vs-row style="justify-content: center;">
     <Register></Register>
     <Login></Login>
-
   </vs-row>
+
+  <SearchResults></SearchResults>
 </div>
 
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
@@ -20,6 +21,7 @@
 import Welcome from '../components/Welcome'
 import Login from '../components/Login'
 import Register from '../components/Register'
+import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
@@ -28,7 +30,8 @@ export default {
   components: {
     Login,
     Register,
-    Welcome
+    Welcome,
+    SearchResults
   },
       data () {
       return {
