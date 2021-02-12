@@ -11,7 +11,7 @@
         open
         >
 
-        <search></search>
+        <Search/>
         <player></player>
 
             <playlist-component/>
@@ -27,25 +27,21 @@
 
   </div>
 </template>
-<script>
-export default {
-     mounted: function () {
-       window.LoggedIn = true;
-     }
-}
-</script>
 
 <script>
 
 import player from './components/player'
-import search from './components/search'
 import PlaylistComponent from './components/PlaylistComponent'
+import Search from './components/Search.vue'
 export default {
    components: {
      player,
-    search,
-PlaylistComponent
-   }
+PlaylistComponent,
+      Search
+   },
+    mounted: function () {
+       window.LoggedIn = true;
+     }
 
 }
 </script>
