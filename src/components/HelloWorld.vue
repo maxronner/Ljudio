@@ -30,7 +30,7 @@ import Register from '../components/Register'
 
 
 
-import SearchResults from '../components/SearchResults'
+//import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
@@ -43,9 +43,7 @@ export default {
     Login,
     Register,
     Welcome,
-    
-    
-    SearchResults
+    //SearchResults
   },
    
        data () {
