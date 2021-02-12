@@ -20,13 +20,13 @@
             v-for="(tr, i) in $vs.getSearch(users, search)"
             :data="tr"
           >
-            <vs-td>
+            <vs-td style="text-align:left">
               {{ tr.song }}
             </vs-td>
-            <vs-td>
+            <vs-td style="text-align:left">
             {{ tr.album }}
             </vs-td>
-            <vs-td>
+            <vs-td style="text-align:left">
             {{ tr.artist }}
             </vs-td>
           </vs-tr>
@@ -73,4 +73,5 @@
             background-color:  #262729;
             color: #42b983;
         }
+        
     </style>
