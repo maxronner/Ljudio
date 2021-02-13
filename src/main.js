@@ -8,7 +8,6 @@ import 'vuesax/dist/vuesax.css' //Vuesax styles
 import Vuelidate from 'vuelidate'
 import Vuex from 'vuex'
 require('vue-tour/dist/vue-tour.css')
-
 Vue.use(VueTour)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -17,7 +16,9 @@ Vue.use(Vuex)
 Vue.use(Vuesax, {
   // options here
 })
-new Vue({
+
+// eslint-disable-next-line no-unused-vars
+window.app = new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')

@@ -1,77 +1,62 @@
 <template>
-    <div class="center">
-      <vs-table>
-        <template #thead>
-          <vs-tr>
-            <vs-th sort @click="users = $vs.sortData($event ,users, 'song')">
-              Låt
-            </vs-th>
-            <vs-th sort @click="users = $vs.sortData($event ,users, 'album')">
-              Album
-            </vs-th>
-            <vs-th sort @click="users = $vs.sortData($event ,users, 'artist')">
-              Artist
-            </vs-th>
-          </vs-tr>
-        </template>
-        <template #tbody>
-          <vs-tr
-            :key="i"
-            v-for="(tr, i) in $vs.getSearch(users, search)"
-            :data="tr"
-          >
-            <vs-td style="text-align:left">
-              {{ tr.song }}
-            </vs-td>
-            <vs-td style="text-align:left">
-            {{ tr.album }}
-            </vs-td>
-            <vs-td style="text-align:left">
-            {{ tr.artist }}
-            </vs-td>
-          </vs-tr>
-        </template>
-      </vs-table>
-    </div>
-  </template>
+  <div class="center">
+    <vs-table>
+      <template #thead>
+        <vs-tr>
+          <vs-th >
+            Namn
+          </vs-th>
+          <vs-th >
+            Artist
+          </vs-th>
+          <vs-th >
+            Typ
+          </vs-th>
+        </vs-tr>
+      </template>
+      <template #tbody>
+        <vs-tr :key="tr.type" v-for="tr in results">
+          <vs-td style="text-align: left">
+            {{ tr.type }}
+          </vs-td>
+          <vs-td style="text-align: left">
+            {{ tr.name }}
+          </vs-td>
+          <vs-td style="text-align: left">
+            {{ tr.author }}
+          </vs-td>
+        </vs-tr>
+      </template>
+    </vs-table>
+  </div>
+</template>
 
 
   <script>
-    export default {
-      data:() => ({
-        search: '',
-        users: [
-          {
-            "song": "I love you",
-            "album": "Love",
-            "artist": "MG",
-          },
-          {
-            "song": "You love me",
-            "album": "Html",
-            "artist": "Andre",
-          },
-          {
-            "song": "I hate you",
-            "album": "Hate",
-            "artist": "Stev",
-          },
-          {
-            "song": "You hate me",
-            "album": "CSS",
-            "artist": "Saimo",
-          }
-        ]
-      })
+export default {
+  data: () => ({
+    search: "",
+    results: window.SearchResult,
+  }),
+    watch: {
+     ttest(){
+
+       
+        //fixa så att listan uppdateras, listan sparas i results men uppdateras inte efter man sökt i sökrutan.
+        
+      }
+    },
+  mounted:function () {
+     
     }
-    </script>
+};
+</script>
 
     <style scoped>
-        .center{
-            width: 100%;
-            height: 100%;
-            background-color:  #262729;
-            color: #42b983;
-        }
-        
-    </style>
+.center {
+  width: 100%;
+  height: 100%;
+  background-color: #262729;
+  color: #42b983;
+}
+</style>

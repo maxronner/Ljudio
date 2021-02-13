@@ -1,6 +1,6 @@
 <template>
   <div >
-      <Welcome></Welcome>
+      <!-- <Welcome></Welcome> -->
 
 <div class="grid">
   <vs-row style="justify-content: center;">
@@ -71,12 +71,6 @@ export default {
       }
     },
      mounted: function () {
-      //this.$tours['myTour'].start();
-       console.log("test");
-      //if(window.LoggedIn){
-        //console.log("test")
-       // Router.push('test')
-      //}
     }
 }
 </script>

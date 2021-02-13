@@ -7,11 +7,10 @@
            <vs-sidebar id="sidebar"
         absolute
         square
-        v-model="active"
         open
         >
 
-        <Search/>
+        <Search2/>
         <player></player>
 
             <playlist-component/>
@@ -32,27 +31,29 @@
 
 import player from './components/player'
 import PlaylistComponent from './components/PlaylistComponent'
-import Search from './components/Search.vue'
+import Search2 from './components/Search2.vue'
 export default {
    components: {
      player,
-PlaylistComponent,
-      Search
+     PlaylistComponent,
+      Search2
    },
     mounted: function () {
        window.LoggedIn = true;
+       window.SearchResult = [{
+          author: "Phượng Hoàng Kara",
+duration: 2214000,
+name: "Nhạc test loa Bass tress cực hay 2019 cho dàn âm thanh sống động",
+params: "wAEB",
+playlistId: "RDAMVMgDvDPiGWUtg",
+thumbnails: {url: "https://i.ytimg.com/vi/gDvDPiGWUtg/hqdefault.jpg?s…DGFogjgJIWg&rs=AMzJL3mGNrbHGQVaz4Ahim67NF1CKujeUg", width: 320, height: 180},
+type: "video",
+videoId: "gDvDPiGWUtg",
+views: "5.9M views"},
+];
      }
-
 }
 </script>
-
-
-
-
-
-
-
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
