@@ -23,7 +23,7 @@ export default {
  await fetch('http://localhost:3000/api/yt/search/' + this.Searchstr).then(response => response.json())
   .then(data => (datatest.push(data)));
 window.SearchResult = datatest[0].content
-//console.log(window.SearchResult);
+console.log(window.SearchResult);
 
         }
       } 
