@@ -63,7 +63,7 @@ PlaylistComponent
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #42b983;
   background-color: #262729;
  
 }

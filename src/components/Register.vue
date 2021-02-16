@@ -17,6 +17,18 @@
 
         <div class="con-form">
 
+          <vs-input block id="emailInput" v-model="first_name" placeholder="Förnamn">
+            <template #icon>
+              
+            </template>
+          </vs-input>
+
+          <vs-input block id="emailInput" v-model="last_name" placeholder="Efternamn">
+            <template #icon>
+              
+            </template>
+          </vs-input>
+
           <vs-input block id="emailInput" v-model="email" placeholder="Email">
             <template #icon>
               @
@@ -28,20 +40,13 @@
               <i class='bx bxs-lock'></i>
             </template>
           </vs-input>
-
-          <vs-input block id="passwordInput" type="password" v-model="password" placeholder="Bekräfta lösenord">
-            <template #icon>
-              <i class='bx bxs-lock'></i>
-            </template>
-          </vs-input>
-
         </div>
 
         <template #footer>
           <div class="footer-dialog">
 
-            <vs-button block>
-              Sign In
+            <vs-button @click="Register()" block>
+              Skapa ditt konto
             </vs-button>
 
           </div>
@@ -60,10 +65,33 @@
         active: false,
         email: '',
         password: '',
-        remember: false
-      })
+        first_name: '',
+        last_name: '',
+      }),
+      methods:{
+        Register(){
+          const data = { email: this.email, password: this.password, firstname: this.first_name, lastname: this.last_name };
+
+fetch('http://localhost:3000/api/users/', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+        }
+      }
     }
 </script>
+
+
 
 
 <style scoped>
