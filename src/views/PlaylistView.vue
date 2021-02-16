@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vs-table>
+    <vs-table v-model="selected">
         <template #thead>
         <vs-tr>
             <vs-th>
@@ -19,15 +19,16 @@
             :key="id"
             v-for="(tr, id) in playlistContent"
             :data="tr"
+            :is-selected="selected == tr"
         >
             <vs-td>
             {{ tr.name }}
             </vs-td>
             <vs-td>
-            {{ tr.email }}
+            {{ tr.artist }}
             </vs-td>
             <vs-td>
-            {{ tr.id }}
+            {{ tr.album }}
             </vs-td>
         </vs-tr>
         </template>
@@ -46,7 +47,8 @@ export default {
             "artist": "Jazzerr",
             "album": "Jazzin'"
           }
-        ]
+        ],
+        selected: null
      }
  },
  mounted () {
