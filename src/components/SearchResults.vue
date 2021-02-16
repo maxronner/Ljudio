@@ -3,19 +3,13 @@
     <vs-table>
       <template #thead>
         <vs-tr>
-          <vs-th >
-            Namn
-          </vs-th>
-          <vs-th >
-            Artist
-          </vs-th>
-          <vs-th >
-            Typ
-          </vs-th>
+          <vs-th> Namn </vs-th>
+          <vs-th> Artist </vs-th>
+          <vs-th> Typ </vs-th>
         </vs-tr>
       </template>
       <template #tbody>
-        <vs-tr :key="tr" v-for="tr in results">
+        <vs-tr :key="index" v-for="(tr, index) in $store.state.SearchResult">
           <vs-td style="text-align: left">
             {{ tr.name }}
           </vs-td>
@@ -36,19 +30,11 @@
 export default {
   data: () => ({
     search: "",
-    results: window.SearchResult,
+    results: [],
   }),
-    watch: {
-     ttest(){
-
-       
-        //fixa så att listan uppdateras, listan sparas i results men uppdateras inte efter man sökt i sökrutan.
-        
-      }
-    },
-  mounted:function () {
-     
-    }
+  mounted: function () {
+    this.results = this.$store.state.SearchResult;
+  },
 };
 </script>
 

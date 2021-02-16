@@ -40,17 +40,7 @@ export default {
    },
     mounted: function () {
        window.LoggedIn = true;
-       window.SearchResult = [{
-          author: "Phượng Hoàng Kara",
-duration: 2214000,
-name: "Nhạc test loa Bass tress cực hay 2019 cho dàn âm thanh sống động",
-params: "wAEB",
-playlistId: "RDAMVMgDvDPiGWUtg",
-thumbnails: {url: "https://i.ytimg.com/vi/gDvDPiGWUtg/hqdefault.jpg?s…DGFogjgJIWg&rs=AMzJL3mGNrbHGQVaz4Ahim67NF1CKujeUg", width: 320, height: 180},
-type: "video",
-videoId: "gDvDPiGWUtg",
-views: "5.9M views"},
-];
+       window.SearchResult = [];
      }
 }
 </script>
