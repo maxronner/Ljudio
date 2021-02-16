@@ -1,11 +1,10 @@
 <template>
   <div >
+      <Login style="float: right; margin-top: 20px"></Login>
       <Welcome></Welcome>
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <Register></Register>
-    <Login></Login>
     <Album></Album>
 
 
@@ -27,7 +26,6 @@ import Welcome from '../components/Welcome'
 // eslint-disable-next-line no-unused-vars
 //import test from '../components/Login'
 import Login from '../components/Login'
-//import Register from '../components/Register'
 //import Album from '../components/Album'
 
 
@@ -43,7 +41,6 @@ export default {
  
   components: {
     Login,
-    //Register,
     Welcome,
     //Album,
     //SearchResults
