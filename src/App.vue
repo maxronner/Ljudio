@@ -7,11 +7,10 @@
            <vs-sidebar id="sidebar"
         absolute
         square
-        v-model="active"
         open
         >
 
-        <search></search>
+        <Search2/>
         <player></player>
 
             <playlist-component/>
@@ -27,36 +26,24 @@
 
   </div>
 </template>
-<script>
-export default {
-     mounted: function () {
-       window.LoggedIn = true;
-     }
-}
-</script>
 
 <script>
 
 import player from './components/player'
-import search from './components/search'
 import PlaylistComponent from './components/PlaylistComponent'
+import Search2 from './components/Search2.vue'
 export default {
    components: {
      player,
-    search,
-PlaylistComponent
-   }
-
+     PlaylistComponent,
+      Search2
+   },
+    mounted: function () {
+       window.LoggedIn = true;
+       window.SearchResult = [];
+     }
 }
 </script>
-
-
-
-
-
-
-
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
