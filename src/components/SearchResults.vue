@@ -15,15 +15,15 @@
         </vs-tr>
       </template>
       <template #tbody>
-        <vs-tr :key="tr.type" v-for="tr in results">
-          <vs-td style="text-align: left">
-            {{ tr.type }}
-          </vs-td>
+        <vs-tr :key="tr" v-for="tr in results">
           <vs-td style="text-align: left">
             {{ tr.name }}
           </vs-td>
           <vs-td style="text-align: left">
             {{ tr.author }}
+          </vs-td>
+          <vs-td style="text-align: left">
+            {{ tr.type }}
           </vs-td>
         </vs-tr>
       </template>
