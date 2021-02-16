@@ -1,54 +1,116 @@
 <template>
-    <div>
-      <vs-button @click="active=!active" id="loginButton" style="width:113px;">
-        Logga in
-      </vs-button>
-      <vs-dialog v-model="active">
-        <template #header>           
+  <div>
+    <vs-button @click="active = !active" id="loginButton" style="width: 113px">
+      Logga in
+    </vs-button>
+    <vs-dialog v-model="active">
+      <template #header>
+        <h4>Logga in</h4>
+      </template>
+
+      <div>
+        <vs-input class="email-input" block v-model="email" placeholder="Email">
+        </vs-input>
+        <vs-input class="password-input"
+          block
+          type="password"
+          v-model="password"
+          placeholder="Lösenord"
+        >
+        </vs-input>
+        <!-- <div class="flex">
+          <vs-checkbox v-model="remember">Kom ihåg mig</vs-checkbox>
+          <a class="forgotpassword" href="#">Glömt lösenord?</a>
+        </div> -->
+      </div>
+
+      <template #footer>
+        <div class="footer-dialog">
+          <vs-button @click="Login()" block> Logga in </vs-button>
+
+          <div class="createaccount">
+            Ny här?
+            <a href="#" @click="ToggleRegister">Skapa ett konto</a>
+          </div>
+        </div>
+      </template>
+    </vs-dialog>
+    <vs-dialog v-model="active2">
+        <template #header>
           <h4>
-              Logga in
+            Fyll i uppgifterna nedan för registrering:
           </h4>
         </template>
 
 
-        <div>
-          <vs-input class="email-input" block v-model="email" placeholder="Email">
+        <div class="con-form">
+
+          <vs-input block id="emailInput" v-model="first_name" placeholder="Förnamn">
+            <template #icon>
+              
+            </template>
           </vs-input>
-          <vs-input class="password-input" block type="password" v-model="password" placeholder="Lösenord">
+
+          <vs-input block id="emailInput" v-model="last_name" placeholder="Efternamn">
+            <template #icon>
+              
+            </template>
           </vs-input>
-          <div class="flex">
-            <vs-checkbox v-model="remember">Kom ihåg mig</vs-checkbox>
-            <a class="forgotpassword" href="#">Glömt lösenord?</a>
-          </div>
+
+          <vs-input block id="emailInput" v-model="email" placeholder="Email">
+          </vs-input>
+
+          <vs-input block id="passwordInput" type="password" v-model="password" placeholder="Lösenord">
+          </vs-input>
         </div>
 
         <template #footer>
           <div class="footer-dialog">
-            <vs-button @click="Login()" block>
-              Logga in
+
+            <vs-button @click="Register()" block>
+              Skapa ditt konto
             </vs-button>
 
-            <div class="createaccount">
-              Ny här? <a href="#">Skapa ett konto</a>
-            </div>
           </div>
         </template>
+
       </vs-dialog>
-    </div>
-  </template>
+  </div>
+</template>
+
 
 <script>
- export default {
-    name: 'Login',
-        data:() => ({
-        active: false,
-        email: '',
-        password: '',
-        remember: false
-      }),
-      methods:{
-        Login(){
-          const data = { email: this.email, password: this.password};
+export default {
+  name: "Login",
+  data: () => ({
+    active: false,
+    active2: false,
+    email: "",
+    password: "",
+    remember: false,
+    first_name: '',
+    last_name: '',
+  }),
+  methods: {
+    Login() {
+      const data = { email: this.email, password: this.password };
+      fetch("http://localhost:3000/api/users/", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
+        Register(){
+          const data = { email: this.email, password: this.password, first_name: this.first_name, last_name: this.last_name };
           fetch('http://localhost:3000/api/users/', {
           method: 'POST', // or 'PUT'
           headers: {
@@ -63,35 +125,45 @@
         .catch((error) => {
         console.error('Error:', error);
         });
-        }
-      }
-}
+        },
+    ToggleRegister(){
+      this.active2 = true;
+      this.active = false;
+    }
+  },
+};
 </script>
 
 <style scoped>
-    .flex{
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-    }
-    .forgotpassword{
-        text-decoration: none;
-        font-size: .9rem;
-    }
-    .createaccount{
-        font-size: .9rem;
-    }
-    .email-input{
-        margin-bottom: 5%;
-    }
-    .password-input{
-        margin-bottom: 5%;
-    }
-    #popup{
-        background-color:#262729;
-    }
-    #loginButton{
-      background-color: #42b983;
-      color: black;
-    }
+.flex {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.forgotpassword {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.createaccount {
+  font-size: 0.9rem;
+}
+.email-input {
+  margin-bottom: 5%;
+}
+.password-input {
+  margin-bottom: 5%;
+}
+#popup {
+  background-color: #262729;
+}
+#loginButton {
+  background-color: #42b983;
+  color: black;
+}
+.con-form{
+  width:100%;
+}
+#emailInput{
+  margin-bottom: 5%
+}
 </style>
