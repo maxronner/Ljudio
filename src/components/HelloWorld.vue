@@ -26,8 +26,8 @@
 import Welcome from '../components/Welcome'
 // eslint-disable-next-line no-unused-vars
 //import test from '../components/Login'
-//import Login from '../components/Login'
-import Register from '../components/Register'
+import Login from '../components/Login'
+//import Register from '../components/Register'
 //import Album from '../components/Album'
 
 
@@ -42,8 +42,8 @@ export default {
  
  
   components: {
-    //Login,
-    Register,
+    Login,
+    //Register,
     Welcome,
     //Album,
     //SearchResults

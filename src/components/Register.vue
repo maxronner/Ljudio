@@ -70,29 +70,25 @@
       }),
       methods:{
         Register(){
-          const data = { email: this.email, password: this.password, firstname: this.first_name, lastname: this.last_name };
-
-fetch('http://localhost:3000/api/users/', {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data),
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
+          const data = { email: this.email, password: this.password, first_name: this.first_name, last_name: this.last_name };
+          fetch('http://localhost:3000/api/users/', {
+          method: 'POST', // or 'PUT'
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+          })
+          .then(response => response.json())
+          .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
         }
       }
-    }
+      }
 </script>
-
-
-
 
 <style scoped>
     .con-form{

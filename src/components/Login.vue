@@ -24,7 +24,7 @@
 
         <template #footer>
           <div class="footer-dialog">
-            <vs-button block>
+            <vs-button @click="Login()" block>
               Logga in
             </vs-button>
 
@@ -40,12 +40,31 @@
 <script>
  export default {
     name: 'Login',
-data:() => ({
+        data:() => ({
         active: false,
         email: '',
         password: '',
         remember: false
-      })
+      }),
+      methods:{
+        Login(){
+          const data = { email: this.email, password: this.password};
+          fetch('http://localhost:3000/api/users/', {
+          method: 'POST', // or 'PUT'
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+          })
+          .then(response => response.json())
+          .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        }
+      }
 }
 </script>
 
