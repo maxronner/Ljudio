@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld'
 import test from '../components/Login'
-
+import PlaylistView from '../views/PlaylistView'
 
 Vue.use(VueRouter)
 
@@ -17,7 +17,8 @@ const routes = [
     path: '/test',
     name: 'test',
     component: test
-  }
+  },
+  { path: '/playlist', name: 'playlist', component: PlaylistView }
 ]
 
 const router = new VueRouter({
