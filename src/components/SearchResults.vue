@@ -4,13 +4,10 @@
         <template #thead>
           <vs-tr>
             <vs-th sort @click="users = $vs.sortData($event ,users, 'song')">
-              Låt
+              Resultat
             </vs-th>
-            <vs-th sort @click="users = $vs.sortData($event ,users, 'album')">
-              Album
-            </vs-th>
-            <vs-th sort @click="users = $vs.sortData($event ,users, 'artist')">
-              Artist
+              <vs-th sort @click="users = $vs.sortData($event ,users, 'song')">
+              Typ
             </vs-th>
           </vs-tr>
         </template>
@@ -21,13 +18,10 @@
             :data="tr"
           >
             <vs-td>
-              {{ tr.song }}
+            Låt:  {{ tr.song }}, Album:  {{tr.album}}, Artist:  {{tr.artist}}
             </vs-td>
             <vs-td>
-            {{ tr.album }}
-            </vs-td>
-            <vs-td>
-            {{ tr.artist }}
+            Låt:  {{ tr.song }}, Album:  {{tr.album}}, Artist:  {{tr.artist}}
             </vs-td>
           </vs-tr>
         </template>
@@ -44,7 +38,7 @@
           {
             "song": "I love you",
             "album": "Love",
-            "artist": "MG",
+            "artist": "MG"
           },
           {
             "song": "You love me",
