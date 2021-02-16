@@ -1,5 +1,3 @@
-let config
-
 export const userService = {
   login,
   logout
@@ -12,7 +10,7 @@ async function login (email, password) {
     body: JSON.stringify({ email, password })
   }
 
-  const response = await fetch('https://localhost:3000/api/users', requestOptions)
+  const response = await fetch('http://localhost:3000/api/users', requestOptions)
   const user = await handleResponse(response)
   // login successful if there's a jwt token in the response
   if (user.accessToken) {
