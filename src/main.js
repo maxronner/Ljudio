@@ -7,6 +7,7 @@ import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 import Vuelidate from 'vuelidate'
 import Vuex from 'vuex'
+import { store } from './store/index'
 require('vue-tour/dist/vue-tour.css')
 
 Vue.use(VueTour)
@@ -18,6 +19,7 @@ Vue.use(Vuesax, {
   // options here
 })
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')
