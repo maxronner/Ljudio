@@ -6,34 +6,47 @@
   <vs-row style="justify-content: center;">
     <Register></Register>
     <Login></Login>
+
+
   </vs-row>
+  
+
 
   <SearchResults></SearchResults>
 </div>
-
+  
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
 </template>
 
 <script>
-
+//import Router from 'vue-router'
 import Welcome from '../components/Welcome'
+// eslint-disable-next-line no-unused-vars
+import test from '../components/Login'
 import Login from '../components/Login'
 import Register from '../components/Register'
-import SearchResults from '../components/SearchResults'
+
+
+
+//import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
+    
     msg: String
   },
+ 
+ 
   components: {
     Login,
     Register,
     Welcome,
-    SearchResults
+    //SearchResults
   },
-      data () {
+   
+       data () {
       return {
         active: false,
         num: 2,
@@ -58,7 +71,12 @@ export default {
       }
     },
      mounted: function () {
-      this.$tours['myTour'].start()
+      //this.$tours['myTour'].start();
+       console.log("test");
+      //if(window.LoggedIn){
+        //console.log("test")
+       // Router.push('test')
+      //}
     }
 }
 </script>
