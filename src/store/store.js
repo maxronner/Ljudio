@@ -7,7 +7,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     SearchResult: [],
-    CurrentPlaylist: []
+    CurrentPlaylist: [],
+    SelectedVideo: 0,
+    CurrentVideo: 0,
   },
   mutations: {
     InsertResults (state,result) {
@@ -33,6 +35,19 @@ export default new Vuex.Store({
        state.CurrentPlaylist = NewPlaylist;
        console.log(this.state.CurrentPlaylist)
     },
+    ChangeSelectedVideo(state,index){
+      state.SelectedVideo = index;
+      console.log("uppdaterade")
+    },
+    IncreaseCurrentVideo(state){
+      if(state.CurrentVideo < state.CurrentPlaylist.length - 1)
+      state.CurrentVideo++;
+    },
+    DecreaseCurrentVideo(state){
+      if(state.CurrentVideo > 0)
+      state.CurrentVideo--;
+    }
+    
 
   }
 })

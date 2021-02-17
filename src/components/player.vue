@@ -30,28 +30,18 @@
       id="ytbPlayer"
       :video-id="id"
         :player-vars="playerVars"
+         @playing="onVideoPlaying"
         ref="youtube"
         width="235"
         height="100"
       ></youtube>
 
-      <div class="slidecontainer">
-        <input
-          type="range"
-          min="0"
-          max=""
-          value="0"
-          class="slider"
-          id="myRange"
-          onchange="changeProgressBar()"
-        />
-        <p><span id="demo"></span></p>
-      </div>
-      <!-- <div class="slider">
-      <vue-slider v-model="value" width="210px" />
-    </div> -->
+      <div class="slider" style="width:200px; margin:0 auto;">
+      <!-- <input type="range" :value="CurrentTime" width="200px" min='0' max="100" @change="onSliderChange" /> -->
+         <vue-slider :min=0 :max=VideoLength :value=CurrentTime @change="onSliderChange($event)" width="210px" />
+    </div>
 
-      <div class="button-group">
+      <div class="button-group" style=" margin-top:4%">
         <vs-button-group>
           <vs-button color="#42b983" @click="playPrevious">
             <i class="fa fa-step-backward"></i>
@@ -78,14 +68,14 @@
 </template>
 <script src="vue-youtube/dist/vue-youtube.js"></script>
 <script>
-// import VueSlider from "vue-slider-component";
-// import "vue-slider-component/theme/antd.css";
-
+  import VueSlider from "vue-slider-component";
+ import "vue-slider-component/theme/antd.css";
 export default {
   components: {
-    // VueSlider,
+     VueSlider
   },
-
+  mounted: function(){
+  },
   data() {
     return {
       playerVars: {
@@ -93,14 +83,41 @@ export default {
         controls: 0,
       },
       id: "",
+      processId:null,
       CurrentVideo:0,
+      SelectedVideoId:this.$store.state.SelectedVideo,
       playlist: this.$store.state.CurrentPlaylist,
       activePlayer: true,
       activeShare: false,
       previousIndex: 0,
+      CurrentTime: 0,
+      VideoLength:100,
     };
   },
   methods: {
+    Onabc(event){
+      console.log(event)
+    },
+   onVideoPlaying: async function() {
+     console.log("kör")
+         let Length = await this.player.getDuration();
+         this.VideoLength = Math.round(Length);
+         if( await this.player.getPlayerState() === 1){
+           console.log("row100");
+           let tete = 0;
+         let processId = setInterval(() => {
+           this.player.getCurrentTime().then((time) => {
+             let progress = (time/Length) * 100;
+             this.CurrentTime = time;
+             this.player.getPlayerState().then((state) => {
+               if(state === 2){
+               clearInterval(processId);
+               }
+             })
+           });
+         },400);
+         }
+  },
     test(){
   this.activePlayer=!this.activePlayer;
   if(this.activePlayer == true){
@@ -110,22 +127,21 @@ export default {
   }
     },
     playVideo() {
-      this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+      this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
       console.log(this.id)
       this.PlayTimeOut();
     },
-    pauseVideo() {
+    async pauseVideo() {
       this.player.pauseVideo();
     },
     playnext: function(){
-      if(this.CurrentVideo < this.$store.state.CurrentPlaylist.length - 1){
-      this.CurrentVideo++;
+      if(this.$store.state.CurrentVideo < this.$store.state.CurrentPlaylist.length - 1){
+      this.$store.commit("IncreaseCurrentVideo");
       }
-      
-      this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+      this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
       this.PlayTimeOut();
   },
-   PlayTimeOut() {
+    PlayTimeOut() {
       if (this.timer) {
         clearTimeout(this.timer);
         this.timer = null;
@@ -135,16 +151,41 @@ export default {
       }, 200);
     },
   playPrevious: function(){
-     if(this.CurrentVideo != 0){
-      this.CurrentVideo--;
+     if(this.$store.state.CurrentVideo > 0){
+      this.$store.commit("DecreaseCurrentVideo");
       }
-    this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+    this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
     this.PlayTimeOut();
   },
   shufflePlay: async function() {
    // this.player.setShuffle(true)
 
+  },
+  seek:async function(time){
+     console.log(time);
+   await this.player.seekTo(time,true)
+  },
+    onSliderChange(time) {
+       if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
+      }
+      this.timer = setTimeout(() => {
+        this.seek(time);
+      }, 800);
+     
+    },
+  },
+  watch:{
+
+SelectedVideoId: function(){
+  if(this.SelectedVideoId != this.$store.state.CurrentVideo){
+  this.$store.state.CurrentVideo = this.SelectedVideoId
+  PlayTimeOut();
   }
+  
+console.log(this.CurrentVideo)
+}
   },
   computed: {
     player() {
@@ -152,21 +193,7 @@ export default {
     },
   },
   
-  //   playNextVideo(newVideoId){
-  // // this.player.playNextVideo()
-  // // this.videoIds.next() = videoId
-  //       var currentvideoIndex = videoIds.indexOf(newVideoId);
-  //       this.newVideoId = videoIds[currentvideoIndex + 1];
-  //        console.log(newVideoId)
-  //   },
-  // playPreviousVideo(newVideoId){
-
-  // var currentvideoIndex = videoIds.indexOf(newVideoId);
-  //       this.newVideoId = songlist[currentvideoIndex - 1];
-  //        console.log(newVideoId)
-  //   },
-  //   shuffle(){
-  //  player.setShuffle(true)
+  
 };
 </script>
 <style>
@@ -178,18 +205,10 @@ export default {
   float: left;
 }
 .slider {
-  margin-top: 15px;
-  margin-left: 10px;
-}
-.slidecontainer {
-  width: 237px;
-}
-.slider {
   -webkit-appearance: none;
   width: 100%;
   height: 7px;
   border-radius: 5px;
-  background: #d3d3d3;
   outline: none;
   opacity: 0.7;
   -webkit-transition: 0.2s;
@@ -197,22 +216,6 @@ export default {
 }
 .slider:hover {
   opacity: 1;
-}
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;
-  height: 1opx;
-  border-radius: 10%;
-  background: #42b983;
-  cursor: pointer;
-}
-.slider::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #42b983;
-  cursor: pointer;
 }
 /* .playerDiv{
   margin-top: 630px  ;
