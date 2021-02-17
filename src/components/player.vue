@@ -28,6 +28,7 @@
    </div > -->
       <youtube
       id="ytbPlayer"
+      :video-id="id"
         :player-vars="playerVars"
         ref="youtube"
         width="235"
@@ -90,9 +91,10 @@ export default {
       playerVars: {
         autoplay: 0,
         controls: 0,
-        list: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"],
       },
-      id: "2Z4m4lnjxkY",
+      id: "",
+      CurrentVideo:0,
+      playlist: this.$store.state.CurrentPlaylist,
       activePlayer: true,
       activeShare: false,
       previousIndex: 0,
@@ -102,23 +104,42 @@ export default {
     test(){
   this.activePlayer=!this.activePlayer;
   if(this.activePlayer == true){
-document.getElementById("ytbPlayer").style.display = "";
+  document.getElementById("ytbPlayer").style.display = "";
   }else{
-document.getElementById("ytbPlayer").style.display = "none";
+  document.getElementById("ytbPlayer").style.display = "none";
   }
     },
     playVideo() {
-      this.player.playVideo();
+      this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+      console.log(this.id)
+      this.PlayTimeOut();
     },
     pauseVideo() {
       this.player.pauseVideo();
     },
     playnext: function(){
-      this.player.setLoop(false);
-      this.player.nextVideo();
+      if(this.CurrentVideo < this.$store.state.CurrentPlaylist.length - 1){
+      this.CurrentVideo++;
+      }
+      
+      this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+      this.PlayTimeOut();
   },
+   PlayTimeOut() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
+      }
+      this.timer = setTimeout(() => {
+         this.player.playVideo();
+      }, 200);
+    },
   playPrevious: function(){
-    this.player.previousVideo();
+     if(this.CurrentVideo != 0){
+      this.CurrentVideo--;
+      }
+    this.id = this.$store.state.CurrentPlaylist[this.CurrentVideo];
+    this.PlayTimeOut();
   },
   shufflePlay: async function() {
    // this.player.setShuffle(true)
