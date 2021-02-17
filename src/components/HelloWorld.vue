@@ -1,39 +1,52 @@
 <template>
   <div >
-      <Welcome></Welcome>
+      <!-- <Welcome></Welcome> -->
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <Register></Register>
+    <!-- <Register></Register>
     <Login></Login>
+ -->
+
   </vs-row>
+  
+
 
   <SearchResults></SearchResults>
 </div>
-
+  
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
 </template>
 
 <script>
+//import Router from 'vue-router'
+//import Welcome from '../components/Welcome'
+// eslint-disable-next-line no-unused-vars
+import test from '../components/Login'
+//import Login from '../components/Login'
+//import Register from '../components/Register'
 
-import Welcome from '../components/Welcome'
-import Login from '../components/Login'
-import Register from '../components/Register'
+
+
 import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
+    
     msg: String
   },
+ 
+ 
   components: {
-    Login,
-    Register,
-    Welcome,
+    //Login,
+    //Register,
+    //Welcome,
     SearchResults
   },
-      data () {
+   
+       data () {
       return {
         active: false,
         num: 2,
@@ -58,7 +71,6 @@ export default {
       }
     },
      mounted: function () {
-      this.$tours['myTour'].start()
     }
 }
 </script>
