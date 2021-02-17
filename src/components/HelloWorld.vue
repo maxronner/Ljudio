@@ -1,12 +1,12 @@
 <template>
   <div >
-      <Welcome></Welcome>
+      <!-- <Welcome></Welcome> -->
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <Register></Register>
+    <!-- <Register></Register>
     <Login></Login>
-
+ -->
 
   </vs-row>
   
@@ -21,10 +21,12 @@
 </template>
 
 <script>
-
-import Welcome from '../components/Welcome'
-import Login from '../components/Login'
-import Register from '../components/Register'
+//import Router from 'vue-router'
+//import Welcome from '../components/Welcome'
+// eslint-disable-next-line no-unused-vars
+import test from '../components/Login'
+//import Login from '../components/Login'
+//import Register from '../components/Register'
 
 
 
@@ -38,11 +40,9 @@ export default {
  
  
   components: {
-    Login,
-    Register,
-    Welcome,
-    
-    
+    //Login,
+    //Register,
+    //Welcome,
     SearchResults
   },
    
@@ -71,7 +71,6 @@ export default {
       }
     },
      mounted: function () {
-      this.$tours['myTour'].start()
     }
 }
 </script>

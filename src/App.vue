@@ -2,22 +2,22 @@
   <div id="app">
       <div class="grid">
       <vs-row id="main" style="width:100%">
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2" style="height:100%;">
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w=2 style="height:100%;">
           <!-- SIDEBAR -->
            <vs-sidebar id="sidebar"
         absolute
         square
-        v-model="active"
         open
         >
 
-        <Search></Search>
-         <PlaylistComponent></PlaylistComponent>
-        <Player></Player>
+        <Search2/>
+        <player></player>
+
+            <playlist-component/>
 
            </vs-sidebar>
         </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" style="height:100%" vs-align="center"  w="10" >
+        <vs-col vs-type="flex" vs-justify="center" style="height:100%; margin-left:2.5%" vs-align="center"  w="9" >
           <router-view/>
         </vs-col>
        
@@ -30,25 +30,21 @@
 <script>
 
 import Player from './components/Player'
-import Search from './components/Search'
+
 import PlaylistComponent from './components/PlaylistComponent'
+import Search2 from './components/Search2.vue'
 export default {
    components: {
      Player,
-    Search,
-PlaylistComponent
-   }
-
+     PlaylistComponent,
+      Search2
+   },
+    mounted: function () {
+       window.LoggedIn = true;
+       window.SearchResult = [];
+     }
 }
 </script>
-
-
-
-
-
-
-
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -60,7 +56,8 @@ PlaylistComponent
  
 }
 #sidebar{
-  background-color:#18181a
+  background-color:#18181a;
+  width:120%
 }
 #main{
   height: 100vh;
