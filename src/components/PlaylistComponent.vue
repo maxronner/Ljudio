@@ -15,9 +15,9 @@
           </h4>
         </template>
           <div>
-          <vs-input block >
+          <vs-input v-model="input" block >
           </vs-input>
-          <vs-button  color= "#42b983"
+          <vs-button @click="AddPlaylist"  color= "#42b983"
     
  
   >
@@ -30,14 +30,14 @@
       </vs-dialog>
 
 
-       <vs-dialog >
+       <!-- <vs-dialog >
         <template #header>           
           <h4>
               Spellista
           </h4>
         </template>
           <div>
-          <vs-input  block >
+          <vs-input v-model="input"  block >
           </vs-input>
           <vs-button  color= "#42b983"
     
@@ -48,7 +48,7 @@
         
         </div>
 
-      </vs-dialog>
+      </vs-dialog> -->
   </div>
  
   <div class="table">
@@ -61,8 +61,8 @@
         >
           <vs-td>
             <div class="ListDisplay">
-            {{ tr.input }}
-            <vs-button @click="Deleteplaylist" color= "#42b983"><i class="fa fa-times"></i></vs-button>
+            {{ input}}
+            <vs-button  color= "#42b983"><i class="fa fa-times"></i></vs-button>
             
             </div>
           
@@ -79,7 +79,7 @@ export default {
   name: 'playlist-component',
   data() {
     return {
-      // input:"",
+       input:"",
       selected: {},
       active: false,
        
@@ -91,10 +91,10 @@ export default {
     
   },
   methods: {
-    // AddPlaylist: function () {
+    AddPlaylist: function () {
     //   // this.warningsContainer.push()
-    //   this.playlists.push({input: this.input})
-    // },
+      this.playlists.push({input: this.input})
+   },
     //  deleteplayList() {
     //   this.$store.commit("removePlayList", this.movie);
     // },

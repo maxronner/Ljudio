@@ -33,7 +33,7 @@
     <iframe src="https://www.youtube.com/embed/RpRpyCJmL1s"
    width="235" height="100" align="left"></iframe>   
    </div > -->  
-    <youtube   :player-vars="playerVars"  v-if="activePlayer" ref="youtube"  width="235"  height="100" ></youtube>
+    <youtube :video-id="id"  :player-vars="playerVars"  v-if="activePlayer" ref="youtube"  width="235"  height="100" ></youtube> 
 
 <div class="slidecontainer">
   <input type="range" min="0" max="" value="0" class="slider" id="myRange"  onchange="changeProgressBar()">
@@ -48,7 +48,7 @@
         <vs-button-group>
           <vs-button  color="#42b983"> <i class="fa fa-step-backward"></i> </vs-button>
           <vs-button  color="#42b983" @click="playVideo"><i class="fa fa-play"></i> </vs-button>
-           <vs-button  color="#42b983" ><i class="fa fa-pause"></i> </vs-button>
+           <vs-button  color="#42b983" @click="pauseVideo"><i class="fa fa-pause"></i> </vs-button>
           <vs-button  color="#42b983" > <i class="fa fa-step-forward"></i> </vs-button>
           <vs-button  color="#42b983" > <i class="fa fa-random"></i> </vs-button>
            <vs-button  color="#42b983"> <i class="fa fa-share"></i> </vs-button>
@@ -84,21 +84,13 @@ export default {
      
       playerVars:{
         autoplay:1,
-        // controls:0
+         controls:0
       },
       
       
        id:"2Z4m4lnjxkY",
       activePlayer: true,
-         videoIds: [{
-           Id:'2Z4m4lnjxkY'
-         },
-         {
-           Id:"lG0Ys-2d4MA"
-         }
-        
-         ],
-        newVideoId:"",
+     
         
         activeShare:false,
         previousIndex :0,
@@ -109,14 +101,11 @@ export default {
 
 
   methods: {
-//     mounted(){
-// this
-//     },
+
  playVideo() {
 
-   this.player.loadPlaylist({playlist: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"] })
-    var index = this.player.getPlaylistIndex()
-     console.log(index)
+  //  this.player.loadPlaylist({playlist: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"] })
+   this.player.playVideo()
 
 
       // if(this.newVideoId == ""){
@@ -130,10 +119,18 @@ export default {
     
 
     }
+    
   },
-  // stopVideo(){
-  //   this.player.stopVideo()()
-  // },
+   pauseVideo(){
+     this.player.pauseVideo()
+   },
+   computed: {
+    player() {
+      return this.$refs.youtube.player
+    }
+  
+  }
+ 
   // playnext: function(){
       
   //    this.player.loadPlaylist({playlist: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"] })
@@ -161,12 +158,7 @@ export default {
 
  
   
-  computed: {
-    player() {
-      return this.$refs.youtube.player
-    }
-  
-  }
+ 
   
 };
 </script>

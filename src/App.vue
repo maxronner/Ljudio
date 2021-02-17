@@ -11,9 +11,10 @@
         >
 
         <Search2/>
+        <playlist-component/>
         <Player></Player>
 
-            <playlist-component/>
+            
 
            </vs-sidebar>
         </vs-col>
