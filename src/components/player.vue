@@ -13,14 +13,14 @@
           </h4>
         </template>
           <div>
-          <vs-input v-model="input" block >
-          </vs-input>
-          <vs-button @click=" AddPlaylist" color= "#42b983"
+          <!-- <vs-input v-model="input" block > -->
+          <!-- </vs-input> -->
+          <!-- <vs-button @click=" AddPlaylist" color= "#42b983" -->
     
  
-  >
+  <!-- >
   Lägg till
-  </vs-button>
+  </vs-button> -->
 
         
         </div>
@@ -33,7 +33,7 @@
     <iframe src="https://www.youtube.com/embed/RpRpyCJmL1s"
    width="235" height="100" align="left"></iframe>   
    </div > -->  
-    <youtube   :player-vars="playerVars"  v-if="activePlayer" ref="youtube"  width="235"  height="100" @playing="playing"></youtube>
+    <youtube   :player-vars="playerVars"  v-if="activePlayer" ref="youtube"  width="235"  height="100" ></youtube>
 
 <div class="slidecontainer">
   <input type="range" min="0" max="" value="0" class="slider" id="myRange"  onchange="changeProgressBar()">
@@ -48,11 +48,11 @@
         <vs-button-group>
           <vs-button  color="#42b983"> <i class="fa fa-step-backward"></i> </vs-button>
           <vs-button  color="#42b983" @click="playVideo"><i class="fa fa-play"></i> </vs-button>
-           <vs-button  color="#42b983" @click="stopVideo"><i class="fa fa-pause"></i> </vs-button>
-          <vs-button  color="#42b983" @click="playnext"> <i class="fa fa-step-forward"></i> </vs-button>
-          <vs-button  color="#42b983" @click="shuffle"> <i class="fa fa-random"></i> </vs-button>
+           <vs-button  color="#42b983" ><i class="fa fa-pause"></i> </vs-button>
+          <vs-button  color="#42b983" > <i class="fa fa-step-forward"></i> </vs-button>
+          <vs-button  color="#42b983" > <i class="fa fa-random"></i> </vs-button>
            <vs-button  color="#42b983"> <i class="fa fa-share"></i> </vs-button>
-             <vs-button  color="#42b983" @click="push()"> <i class="fa fa-heart"></i> </vs-button>
+             <vs-button  color="#42b983"> <i class="fa fa-heart"></i> </vs-button>
           <vs-button  color="#42b983" @click="activePlayer = !activePlayer">
 
             <i class="fa fa-expand"></i>
@@ -131,15 +131,15 @@ export default {
 
     }
   },
-  stopVideo(){
-    this.player.stopVideo()()
-  },
-  playnext: function(){
+  // stopVideo(){
+  //   this.player.stopVideo()()
+  // },
+  // playnext: function(){
       
-     this.player.loadPlaylist({playlist: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"] })
+  //    this.player.loadPlaylist({playlist: ['UA_yqByuFP4', "2Z4m4lnjxkY","Mp4D0oHEnjc"] })
   
-    // player.loadPlaylist(playlist, this.previousIndex+1)
-  },
+  //   // player.loadPlaylist(playlist, this.previousIndex+1)
+  // },
 //   playNextVideo(newVideoId){
 // // this.player.playNextVideo()
 // // this.videoIds.next() = videoId

@@ -11,7 +11,7 @@
         >
 
         <Search2/>
-        <player></player>
+        <Player></Player>
 
             <playlist-component/>
 
@@ -29,7 +29,7 @@
 
 <script>
 
-import Player from './components/Player'
+import Player from './components/player'
 
 import PlaylistComponent from './components/PlaylistComponent'
 import Search2 from './components/Search2.vue'

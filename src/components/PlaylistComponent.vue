@@ -15,9 +15,9 @@
           </h4>
         </template>
           <div>
-          <vs-input v-model="input" block >
+          <vs-input block >
           </vs-input>
-          <vs-button @click=" AddPlaylist" color= "#42b983"
+          <vs-button  color= "#42b983"
     
  
   >
@@ -30,7 +30,7 @@
       </vs-dialog>
 
 
-       <vs-dialog v-model="activeShare">
+       <vs-dialog >
         <template #header>           
           <h4>
               Spellista
@@ -79,7 +79,7 @@ export default {
   name: 'playlist-component',
   data() {
     return {
-      input:"",
+      // input:"",
       selected: {},
       active: false,
        
@@ -91,10 +91,10 @@ export default {
     
   },
   methods: {
-    AddPlaylist: function () {
-      // this.warningsContainer.push()
-      this.playlists.push({input: this.input})
-    },
+    // AddPlaylist: function () {
+    //   // this.warningsContainer.push()
+    //   this.playlists.push({input: this.input})
+    // },
     //  deleteplayList() {
     //   this.$store.commit("removePlayList", this.movie);
     // },
