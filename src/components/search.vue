@@ -1,7 +1,7 @@
 <template>
-  <div class="search">
+  <div class="search" >
     
-    <vs-input   placeholder="Search" v-model="value1"/>
+    <vs-input   placeholder="Sök" v-model="value1"/>
     <div class="center examplex">
      
     

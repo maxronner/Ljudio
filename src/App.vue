@@ -11,10 +11,9 @@
         open
         >
 
-        <search></search>
-        <player></player>
-
-            <playlist-component/>
+        <Search></Search>
+         <PlaylistComponent></PlaylistComponent>
+        <Player></Player>
 
            </vs-sidebar>
         </vs-col>
@@ -30,13 +29,13 @@
 
 <script>
 
-import player from './components/player'
-import search from './components/search'
+import Player from './components/Player'
+import Search from './components/Search'
 import PlaylistComponent from './components/PlaylistComponent'
 export default {
    components: {
-     player,
-    search,
+     Player,
+    Search,
 PlaylistComponent
    }
 

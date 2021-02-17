@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import VueYoutube from 'vue-youtube'
 
 Vue.use(VueRouter)
-
+Vue.use(VueYoutube)
 const routes = [
   {
     path: '/',
