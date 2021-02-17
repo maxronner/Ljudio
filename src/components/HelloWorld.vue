@@ -1,18 +1,18 @@
 <template>
   <div >
-      <!-- <Welcome></Welcome> -->
+      <Login style="float: right; margin-top: 20px"></Login>
+      <Welcome></Welcome>
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <!-- <Register></Register>
-    <Login></Login>
- -->
+    <Album></Album>
+
 
   </vs-row>
   
 
 
-  <SearchResults></SearchResults>
+  <!-- <SearchResults></SearchResults> -->
 </div>
   
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
@@ -24,13 +24,13 @@
 //import Router from 'vue-router'
 //import Welcome from '../components/Welcome'
 // eslint-disable-next-line no-unused-vars
-import test from '../components/Login'
-//import Login from '../components/Login'
-//import Register from '../components/Register'
+//import test from '../components/Login'
+import Login from '../components/Login'
+//import Album from '../components/Album'
 
 
 
-import SearchResults from '../components/SearchResults'
+//import SearchResults from '../components/SearchResults'
 export default {
   name: 'HelloWorld',
   props: {
@@ -40,10 +40,10 @@ export default {
  
  
   components: {
-    //Login,
-    //Register,
+    Login,
     //Welcome,
-    SearchResults
+    //Album,
+    //SearchResults
   },
    
        data () {
