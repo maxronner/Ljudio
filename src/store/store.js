@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     SearchResult: [],
     CurrentPlaylist: [],
-    Myplaylist:[]
+    Myplaylist:[],
 
 
   },
@@ -37,19 +37,15 @@ export default new Vuex.Store({
        console.log(this.state.CurrentPlaylist)
 
     },
-    
-    async  GetMyplaylist(state,result) {
-      
-      state.Myplaylist = [];
-    
-        await fetch("http://localhost:3000/api/yt/playlists/" )
-          .then((response) => response.json())
-          .then((data) => state.Myplaylist.push(data)
-
-         }
-        // this.$store.commit("InsertResults", datatest[0].content);
-      }
-
-
-  }
+  
+   GetMyplaylist(state) {
+    let playlist = [];
+       fetch("http://localhost:3000/api/playlist/4")
+        .then((response) => response.json())
+        .then((data) => playlist.push(data));
+        var test = playlist[0];
+        console.log(test[0])
+        state.Myplaylist = playlist;
+}
+},
 })
