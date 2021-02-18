@@ -1,11 +1,11 @@
 <template>
   <div >
       <Login style="float: right; margin-top: 20px"></Login>
-      <Welcome></Welcome>
+      <!-- <Welcome></Welcome> -->
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <Album></Album>
+    <!-- <Album></Album> -->
 
 
   </vs-row>

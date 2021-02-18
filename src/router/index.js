@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import welcome from '../Views/Welcome'
-import Search from '../components/HelloWorld'
-
+import HelloWorld from '../components/HelloWorld'
+import VueYoutube from 'vue-youtube'
 
 Vue.use(VueRouter)
-
+Vue.use(VueYoutube)
 const routes = [
   {
     path: '/',
@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/Search',
     name: 'search',
-    component: Search
+    component: HelloWorld
   }
 ]
 
