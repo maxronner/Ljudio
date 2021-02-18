@@ -1,13 +1,12 @@
 <template>
   <div>
-    <vs-button @click="active = !active" id="loginButton" style="width: 113px">
+    <vs-button @click="active = !active" v-if="!this.$store.state.LoggedIn" id="loginButton" style="width: 113px">
       Logga in
     </vs-button>
     <vs-dialog v-model="active">
       <template #header>
         <h4>Logga in</h4>
       </template>
-
       <div>
         <vs-input class="email-input" block v-model="email" placeholder="Email">
         </vs-input>
@@ -45,19 +44,19 @@
 
         <div class="con-form">
 
-          <vs-input block id="emailInput" v-model="first_name" placeholder="Förnamn">
+          <vs-input block class="emailInput" v-model="first_name" placeholder="Förnamn">
             <template #icon>
               
             </template>
           </vs-input>
 
-          <vs-input block id="emailInput" v-model="last_name" placeholder="Efternamn">
+          <vs-input block class="emailInput" v-model="last_name" placeholder="Efternamn">
             <template #icon>
               
             </template>
           </vs-input>
 
-          <vs-input block id="emailInput" v-model="email" placeholder="Email">
+          <vs-input block class="emailInput" v-model="email" placeholder="Email">
           </vs-input>
 
           <vs-input block id="passwordInput" type="password" v-model="password" placeholder="Lösenord">
@@ -75,16 +74,35 @@
         </template>
 
       </vs-dialog>
+      <!-- LOGGA UT -->
+
+       <vs-button v-if="this.$store.state.LoggedIn" @click="active3=!active3" id="logoutButton" style="width: 113px">
+      {{this.$store.state.LoggedInUsername}}
+    </vs-button>
+    <vs-dialog v-model="active3">
+      <template #header>
+        <h4>Logga ut</h4>
+      </template>
+      <template #footer>
+        <div class="footer-dialog">
+          <vs-button @click="Logout()" block> Logga ut </vs-button>
+        </div>
+      </template>
+    </vs-dialog>
   </div>
 </template>
 
 
 <script>
+import router from "../router/index"
 export default {
   name: "Login",
   data: () => ({
     active: false,
     active2: false,
+    active3: false,
+    active4: false,
+    buttontext: "",
     email: "",
     password: "",
     remember: false,
@@ -92,9 +110,9 @@ export default {
     last_name: '',
   }),
   methods: {
-    Login() {
+    async Login() {
       const data = { email: this.email, password: this.password };
-      fetch("http://localhost:3000/api/users/", {
+      await fetch("http://localhost:3000/api/login/", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +121,14 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
+          this.$store.state.LoggedIn = true;
+          console.log("Success:", data, data.user.first_name);
+         this.$store.state.LoggedInUsername = data.user.first_name;
+          console.log(this.first_name);
+          this.active4 = this.$store.state.LoggedIn;
+          router.push("Search");
+          console.log(this.$store.state.LoggedIn);
+          
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -121,6 +146,7 @@ export default {
           .then(response => response.json())
           .then(data => {
           console.log('Success:', data);
+          this.Login();
         })
         .catch((error) => {
         console.error('Error:', error);
@@ -129,6 +155,26 @@ export default {
     ToggleRegister(){
       this.active2 = true;
       this.active = false;
+    },
+    Logout(){
+      const data = { email: this.email, password: this.password};
+          fetch('http://localhost:3000/api/login/', {
+          method: 'DELETE', // or 'PUT'
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+          })
+          .then(response => response.json())
+          .then(data => {
+             this.$store.state.LoggedIn = false;
+                    console.log(this.$store.state.LoggedIn);
+                    router.push("/");
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
     }
   },
 };
@@ -163,7 +209,7 @@ export default {
 .con-form{
   width:100%;
 }
-#emailInput{
+.emailInput{
   margin-bottom: 5%
 }
 </style>

@@ -10,8 +10,12 @@ export default new Vuex.Store({
     CurrentPlaylist: [],
     SelectedVideo: 0,
     CurrentVideo: 0,
+    LoggedInUsername:"",
+    LoggedIn:false,
   },
   mutations: {
+    SetUsername(state, payload){
+      state.LoggedInUsername = payload},
     InsertResults (state,result) {
       state.SearchResult = [];
       result.forEach(element => {
