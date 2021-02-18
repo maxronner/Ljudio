@@ -1,5 +1,6 @@
 <template>
   <div id="Main" style="width:100%;">
+      <Login style="float: right; margin-top: 20px"></Login>
       <div class="Grid">
             <vs-row style="width:100%; height:35vh; margon:0 auto; margin-top:10%;">
         <vs-col offset="3" w="6" style="text-align:center; ">
@@ -36,8 +37,12 @@
 </template>
 
 <script>
+import Login from '../components/Login'
 export default {
-name:'WelcomeComponent'
+name:'WelcomeComponent',
+components:{
+    Login,
+}
 }
 </script>
 

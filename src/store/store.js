@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     LoggedInUsername:"",
-    SearchResult: []
+    SearchResult: [],
+    LoggedIn:false,
   },
   mutations: {
     InsertResults (state,result) {

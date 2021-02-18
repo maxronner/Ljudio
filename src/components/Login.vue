@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vs-button @click="active = !active" v-if="!active4" id="loginButton" style="width: 113px">
+    <vs-button @click="active = !active" v-if="!this.$store.state.LoggedIn" id="loginButton" style="width: 113px">
       Logga in
     </vs-button>
     <vs-dialog v-model="active">
@@ -76,8 +76,8 @@
       </vs-dialog>
       <!-- LOGGA UT -->
 
-       <vs-button v-if="active4" @click="active3 = !active3" id="logoutButton" style="width: 113px">
-      Logga ut
+       <vs-button v-if="this.$store.state.LoggedIn" @click="active3=!active3" id="logoutButton" style="width: 113px">
+      {{this.$store.state.LoggedInUsername}}
     </vs-button>
     <vs-dialog v-model="active3">
       <template #header>
@@ -94,13 +94,15 @@
 
 
 <script>
+import router from "../router/index"
 export default {
   name: "Login",
   data: () => ({
     active: false,
     active2: false,
     active3: false,
-    active4: sessionStorage.loggedIn,
+    active4: false,
+    buttontext: "",
     email: "",
     password: "",
     remember: false,
@@ -119,9 +121,14 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
-          sessionStorage.loggedIn = true;
+          this.$store.state.LoggedIn = true;
           console.log("Success:", data, data.user.first_name);
-          this.first_name = data.user.first_name;
+         this.$store.state.LoggedInUsername = data.user.first_name;
+          console.log(this.first_name);
+          this.active4 = this.$store.state.LoggedIn;
+          router.push("Search");
+          console.log(this.$store.state.LoggedIn);
+          
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -139,6 +146,7 @@ export default {
           .then(response => response.json())
           .then(data => {
           console.log('Success:', data);
+          this.Login();
         })
         .catch((error) => {
         console.error('Error:', error);
@@ -159,7 +167,9 @@ export default {
           })
           .then(response => response.json())
           .then(data => {
-            sessionStorage.loggedIn = false;
+             this.$store.state.LoggedIn = false;
+                    console.log(this.$store.state.LoggedIn);
+                    router.push("/");
           console.log('Success:', data);
         })
         .catch((error) => {

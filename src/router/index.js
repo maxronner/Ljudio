@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HelloWorld from '../components/HelloWorld'
-import test from '../components/Login'
+import welcome from '../Views/Welcome'
+import Search from '../components/HelloWorld'
 
 
 Vue.use(VueRouter)
@@ -9,14 +9,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
+    name: 'welcome',
+    component: welcome
   },
 
   {
-    path: '/test',
-    name: 'test',
-    component: test
+    path: '/Search',
+    name: 'search',
+    component: Search
   }
 ]
 
