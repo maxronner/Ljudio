@@ -14,7 +14,8 @@
 
   <SearchResults></SearchResults>
 </div>
-  
+
+
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
 
   </div>
@@ -49,6 +50,7 @@ export default {
        data () {
       return {
         active: false,
+        test: false,
         num: 2,
           num2: 10,
         steps: [

@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div style="height:20%">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -16,17 +16,18 @@
         <!-- <vs-button @click=" AddPlaylist" color= "#42b983" -->
 
         <!-- >
-  Lägg till
-  </vs-button> -->
+    Lägg till
+    </vs-button> -->
       </div>
     </vs-dialog>
 
-    <div class="playerDiv">
+    <div class="playerDiv" style="margin-top: 500px; padding: 0px;">
       <!-- <div id='video' v-if="activePlayer">
     <iframe src="https://www.youtube.com/embed/RpRpyCJmL1s"
    width="235" height="100" align="left"></iframe>   
    </div > -->
       <youtube
+      style="margin-left:5%;"
       id="ytbPlayer"
       :video-id="id"
         :player-vars="playerVars"
@@ -37,11 +38,10 @@
       ></youtube>
 
       <div class="slider" style="width:200px; margin:0 auto;">
-      <!-- <input type="range" :value="CurrentTime" width="200px" min='0' max="100" @change="onSliderChange" /> -->
-         <vue-slider :min=0 :max=VideoLength :value=CurrentTime @change="onSliderChange($event)" width="210px" />
+         <vue-slider style="margin-left:3%" :min=0 :max=VideoLength :value=CurrentTime @change="onSliderChange($event)" width="210px" />
     </div>
 
-      <div class="button-group" style=" margin-top:4%">
+      <div class="button-group" style=" margin-top:4%; margin-left:3%">
         <vs-button-group>
           <vs-button color="#42b983" @click="playPrevious">
             <i class="fa fa-step-backward"></i>
@@ -55,8 +55,7 @@
           <vs-button color="#42b983" @click="playnext">
             <i class="fa fa-step-forward"></i>
           </vs-button>
-          <vs-button color="#42b983" @click="shufflePlay"> <i class="fa fa-random"></i> </vs-button>
-          <vs-button color="#42b983"> <i class="fa fa-share"></i> </vs-button>
+          <vs-button color="#42b983" @click="OpenDialog"> <i class="fa fa-share"></i> </vs-button>
           <vs-button color="#42b983"> <i class="fa fa-heart"></i> </vs-button>
           <vs-button color="#42b983" @click="test">
             <i class="fa fa-expand"></i>
@@ -74,8 +73,6 @@ export default {
   components: {
      VueSlider
   },
-  mounted: function(){
-  },
   data() {
     return {
       playerVars: {
@@ -92,11 +89,15 @@ export default {
       previousIndex: 0,
       CurrentTime: 0,
       VideoLength:100,
+       colorAlert:'primary',
+    titleAlert:'Alert',
+    activeAlert:false,
+    valueInput:'',
     };
   },
   methods: {
-    Onabc(event){
-      console.log(event)
+    OpenDialog(){
+     alert("Det här är din delningskod: " + this.$store.state.CurrentVideoId);
     },
    onVideoPlaying: async function() {
      console.log("kör")
@@ -128,7 +129,6 @@ export default {
     },
     playVideo() {
       this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
-      console.log(this.id)
       this.PlayTimeOut();
     },
     async pauseVideo() {
@@ -148,6 +148,7 @@ export default {
       }
       this.timer = setTimeout(() => {
          this.player.playVideo();
+        this.$store.state.CurrentVideoId = this.id;
       }, 200);
     },
   playPrevious: function(){
@@ -178,14 +179,17 @@ export default {
   },
   watch:{
 
-SelectedVideoId: function(){
-  if(this.SelectedVideoId != this.$store.state.CurrentVideo){
-  this.$store.state.CurrentVideo = this.SelectedVideoId
-  PlayTimeOut();
-  }
+CurrentVideo: function (val, oldVal) {
+      console.log('new: %s, old: %s', val, oldVal)
+    }
+  },
+  mounted: function(){
+    this.$root.$on('player', () => {
+       this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
+            this.PlayTimeOut();
+            
+        });
   
-console.log(this.CurrentVideo)
-}
   },
   computed: {
     player() {

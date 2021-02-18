@@ -37,8 +37,8 @@ export default {
   }),
   methods:{
     SelectVideo: function(index){
-      this.$store.commit("ChangeSelectedVideo",index);
-      //funkar inte
+    this.$store.commit("test",index);
+     this.$root.$emit('player')
     }
   },
   mounted: function () {
