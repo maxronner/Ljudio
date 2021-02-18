@@ -6,12 +6,14 @@ Vue.use(Vuex)
 // eslint-disable-next-line no-unused-vars
 export default new Vuex.Store({
   state: {
+    test:function(){},
     SearchResult: [],
     CurrentPlaylist: [],
     SelectedVideo: 0,
     CurrentVideo: 0,
     LoggedInUsername:"",
     LoggedIn:false,
+    CurrentVideoId: ""
   },
   mutations: {
     SetUsername(state, payload){
@@ -41,7 +43,7 @@ export default new Vuex.Store({
     },
     ChangeSelectedVideo(state,index){
       state.SelectedVideo = index;
-      console.log("uppdaterade")
+      console.log("uppdaterade" + index)
     },
     IncreaseCurrentVideo(state){
       if(state.CurrentVideo < state.CurrentPlaylist.length - 1)
@@ -50,6 +52,9 @@ export default new Vuex.Store({
     DecreaseCurrentVideo(state){
       if(state.CurrentVideo > 0)
       state.CurrentVideo--;
+    },
+    test(state,index){
+      state.CurrentVideo = index;
     }
     
 

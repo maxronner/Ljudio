@@ -51,18 +51,19 @@
       </vs-dialog> -->
   </div>
  
-  <div class="table">
+  <div class="table" style="overflow-y: scroll;width:200px; height: 200px;">
     <table>
       <template>
         <vs-tr
           :key="i"
           v-for="(tr, i) in playlists"
           :data="tr"
+         
         >
-          <vs-td>
+          <vs-td  style="width:200px;">
             <div class="ListDisplay">
             {{ input}}
-            <vs-button  color= "#42b983"><i class="fa fa-times"></i></vs-button>
+            <vs-button style="float:right;   width:25px; height: 20px;"  color= "#42b983"><i class="fa fa-times" ></i></vs-button>
             
             </div>
           
@@ -109,14 +110,9 @@ export default {
 .button{
   margin-left: 15px;
   margin-top: 10px;
-  ;
 }
 .table{
    margin-left: 20px;
    margin-top: 20px;
-}
-.ListDisplay{
-  display: flex;
-  justify-content: space-between;
 }
 </style>
