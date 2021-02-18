@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vs-button @click="active = !active" id="loginButton" style="width: 113px">
+    <vs-button @click="active = !active" v-if="!active4" id="loginButton" style="width: 113px">
       Logga in
     </vs-button>
     <vs-dialog v-model="active">
@@ -76,7 +76,7 @@
       </vs-dialog>
       <!-- LOGGA UT -->
 
-       <vs-button @click="active3 = !active3" id="logoutButton" style="width: 113px">
+       <vs-button v-if="active4" @click="active3 = !active3" id="logoutButton" style="width: 113px">
       Logga ut
     </vs-button>
     <vs-dialog v-model="active3">
@@ -100,6 +100,7 @@ export default {
     active: false,
     active2: false,
     active3: false,
+    active4: sessionStorage.loggedIn,
     email: "",
     password: "",
     remember: false,
@@ -118,7 +119,9 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
+          sessionStorage.loggedIn = true;
           console.log("Success:", data, data.user.first_name);
+          this.first_name = data.user.first_name;
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -156,6 +159,7 @@ export default {
           })
           .then(response => response.json())
           .then(data => {
+            sessionStorage.loggedIn = false;
           console.log('Success:', data);
         })
         .catch((error) => {
