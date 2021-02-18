@@ -9,12 +9,15 @@
         </vs-tr>
       </template>
       <template #tbody>
-        <vs-tr :key="index" v-for="(tr, index) in $store.state.SearchResult">
+        <vs-tr :key="index" v-for="(tr, index) in $store.state.SearchResult" @click="SelectVideo(index)" >
           <vs-td style="text-align: left">
             {{ tr.name }}
           </vs-td>
-          <vs-td style="text-align: left">
+          <vs-td v-if="tr.type != 'song' " style="text-align: left">
             {{ tr.author }}
+          </vs-td>
+           <vs-td v-if="tr.type == 'song' " style="text-align: left">
+            {{ tr.artist.name }}
           </vs-td>
           <vs-td style="text-align: left">
             {{ tr.type }}
@@ -32,6 +35,12 @@ export default {
     search: "",
     results: [],
   }),
+  methods:{
+    SelectVideo: function(index){
+      this.$store.commit("ChangeSelectedVideo",index);
+      //funkar inte
+    }
+  },
   mounted: function () {
     this.results = this.$store.state.SearchResult;
   },

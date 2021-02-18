@@ -1,11 +1,11 @@
 <template>
   <div >
       <Login style="float: right; margin-top: 20px"></Login>
-      <Welcome></Welcome>
+      <!-- <Welcome></Welcome> -->
 
 <div class="grid">
   <vs-row style="justify-content: center;">
-    <Album></Album>
+    <!-- <Album></Album> -->
 
 
   </vs-row>
@@ -15,7 +15,7 @@
 
   <SearchResults></SearchResults>
 
-  <ArtistSongs></ArtistSongs>
+  <!-- <ArtistSongs></ArtistSongs> -->
 
 </div>
   
@@ -35,7 +35,7 @@ import Login from '../components/Login'
 
 
 import SearchResults from '../components/SearchResults'
-import ArtistSongs from '../components/ArtistSongs'
+// import ArtistSongs from '../components/ArtistSongs'
 
 export default {
   name: 'HelloWorld',
@@ -49,7 +49,7 @@ export default {
     Login,
     //Welcome,
     SearchResults,
-    ArtistSongs
+    //ArtistSongs
   },
    
        data () {
