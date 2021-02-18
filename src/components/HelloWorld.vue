@@ -12,7 +12,11 @@
   
 
 
+
   <SearchResults></SearchResults>
+
+  <!-- <ArtistSongs></ArtistSongs> -->
+
 </div>
   
     <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
@@ -31,6 +35,8 @@ import Login from '../components/Login'
 
 
 import SearchResults from '../components/SearchResults'
+// import ArtistSongs from '../components/ArtistSongs'
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -42,8 +48,8 @@ export default {
   components: {
     Login,
     //Welcome,
-    //Album,
-    SearchResults
+    SearchResults,
+    //ArtistSongs
   },
    
        data () {
