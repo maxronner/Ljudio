@@ -46,7 +46,11 @@ export default {
      }
    },
     mounted: function () {
-       window.LoggedIn = true;
+       if(sessionStorage.getItem("LoggedIn") == "true"){
+         this.$store.state.LoggedIn = true;
+       }else{
+         this.$store.state.LoggedIn = false;
+       }
        window.SearchResult = [];
      }
 }

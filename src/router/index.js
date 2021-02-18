@@ -14,7 +14,12 @@ const routes = [
   },
 
   {
-    path: '/Search',
+    path: '/search',
+    name: 'search',
+    component: HelloWorld
+  },
+  {
+    path: '/search/:songid?',
     name: 'search',
     component: HelloWorld
   }

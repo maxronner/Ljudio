@@ -11,7 +11,7 @@ export default new Vuex.Store({
     CurrentPlaylist: [],
     SelectedVideo: 0,
     CurrentVideo: 0,
-    LoggedInUsername:"",
+    LoggedInUsername:sessionStorage.getItem("UserName"),
     LoggedIn:false,
     CurrentVideoId: ""
   },

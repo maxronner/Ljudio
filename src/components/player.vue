@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     OpenDialog(){
-     alert("Det här är din delningskod: " + this.$store.state.CurrentVideoId);
+     alert("Det här är din delningslänk: " + 'http://localhost:8081/Search/P8krIGIbiWo');
     },
    onVideoPlaying: async function() {
      console.log("kör")
@@ -184,9 +184,14 @@ CurrentVideo: function (val, oldVal) {
     }
   },
   mounted: function(){
+    if(this.$route.params.songid != undefined){
+      console.log(this.$route.params.songid);
+      this.id = this.$route.params.songid;
+      this.PlayTimeOut();
+    }
     this.$root.$on('player', () => {
        this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
-            this.PlayTimeOut();
+            this.player.playVideo();
             
         });
   
