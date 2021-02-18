@@ -11,9 +11,10 @@
         >
 
         <Search2/>
-        <player></player>
+        <playlist-component/>
+        <Player></Player>
 
-            <playlist-component/>
+            
 
            </vs-sidebar>
         </vs-col>
@@ -29,12 +30,13 @@
 
 <script>
 
-import player from './components/player'
+import Player from './components/player'
+
 import PlaylistComponent from './components/PlaylistComponent'
 import Search2 from './components/Search2.vue'
 export default {
    components: {
-     player,
+     Player,
      PlaylistComponent,
       Search2
    },
@@ -50,7 +52,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #42b983;
   background-color: #262729;
  
 }
