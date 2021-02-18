@@ -1,6 +1,11 @@
 <template>
   <div>
-    <vs-button @click="active = !active" v-if="!this.$store.state.LoggedIn" id="loginButton" style="width: 113px">
+    <vs-button
+      @click="active = !active"
+      v-if="!this.$store.state.LoggedIn"
+      id="loginButton"
+      style="width: 113px"
+    >
       Logga in
     </vs-button>
     <vs-dialog v-model="active">
@@ -10,7 +15,8 @@
       <div>
         <vs-input class="email-input" block v-model="email" placeholder="Email">
         </vs-input>
-        <vs-input class="password-input"
+        <vs-input
+          class="password-input"
           block
           type="password"
           v-model="password"
@@ -35,49 +41,57 @@
       </template>
     </vs-dialog>
     <vs-dialog v-model="active2">
-        <template #header>
-          <h4>
-            Fyll i uppgifterna nedan för registrering:
-          </h4>
-        </template>
+      <template #header>
+        <h4>Fyll i uppgifterna nedan för registrering:</h4>
+      </template>
 
+      <div class="con-form">
+        <vs-input
+          block
+          class="emailInput"
+          v-model="first_name"
+          placeholder="Förnamn"
+        >
+          <template #icon> </template>
+        </vs-input>
 
-        <div class="con-form">
+        <vs-input
+          block
+          class="emailInput"
+          v-model="last_name"
+          placeholder="Efternamn"
+        >
+          <template #icon> </template>
+        </vs-input>
 
-          <vs-input block class="emailInput" v-model="first_name" placeholder="Förnamn">
-            <template #icon>
-              
-            </template>
-          </vs-input>
+        <vs-input block class="emailInput" v-model="email" placeholder="Email">
+        </vs-input>
 
-          <vs-input block class="emailInput" v-model="last_name" placeholder="Efternamn">
-            <template #icon>
-              
-            </template>
-          </vs-input>
+        <vs-input
+          block
+          id="passwordInput"
+          type="password"
+          v-model="password"
+          placeholder="Lösenord"
+        >
+        </vs-input>
+      </div>
 
-          <vs-input block class="emailInput" v-model="email" placeholder="Email">
-          </vs-input>
-
-          <vs-input block id="passwordInput" type="password" v-model="password" placeholder="Lösenord">
-          </vs-input>
+      <template #footer>
+        <div class="footer-dialog">
+          <vs-button @click="Register()" block> Skapa ditt konto </vs-button>
         </div>
+      </template>
+    </vs-dialog>
+    <!-- LOGGA UT -->
 
-        <template #footer>
-          <div class="footer-dialog">
-
-            <vs-button @click="Register()" block>
-              Skapa ditt konto
-            </vs-button>
-
-          </div>
-        </template>
-
-      </vs-dialog>
-      <!-- LOGGA UT -->
-
-       <vs-button v-if="this.$store.state.LoggedIn" @click="active3=!active3" id="logoutButton" style="width: 113px">
-      {{this.$store.state.LoggedInUsername}}
+    <vs-button
+      v-if="this.$store.state.LoggedIn"
+      @click="active3 = !active3"
+      id="logoutButton"
+      style="width: 113px"
+    >
+      {{ this.$store.state.LoggedInUsername }}
     </vs-button>
     <vs-dialog v-model="active3">
       <template #header>
@@ -121,14 +135,14 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
+          if(data.loggedIn == true){
           this.$store.state.LoggedIn = true;
-          console.log("Success:", data, data.user.first_name);
-         this.$store.state.LoggedInUsername = data.user.first_name;
-          console.log(this.first_name);
+          this.$store.state.LoggedInUsername = data.user.first_name;
           this.active4 = this.$store.state.LoggedIn;
           router.push("Search");
-          console.log(this.$store.state.LoggedIn);
-          
+          }
+         
+        
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -206,10 +220,10 @@ export default {
   background-color: #42b983;
   color: black;
 }
-.con-form{
-  width:100%;
+.con-form {
+  width: 100%;
 }
-.emailInput{
-  margin-bottom: 5%
+.emailInput {
+  margin-bottom: 5%;
 }
 </style>
