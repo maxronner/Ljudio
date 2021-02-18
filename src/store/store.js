@@ -7,7 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     SearchResult: [],
-    CurrentPlaylist: []
+    CurrentPlaylist: [],
+    Myplaylist:[]
+
+
   },
   mutations: {
     InsertResults (state,result) {
@@ -32,7 +35,21 @@ export default new Vuex.Store({
        });
        state.CurrentPlaylist = NewPlaylist;
        console.log(this.state.CurrentPlaylist)
+
     },
+    
+    async  GetMyplaylist(state,result) {
+      
+      state.Myplaylist = [];
+    
+        await fetch("http://localhost:3000/api/yt/playlists/" )
+          .then((response) => response.json())
+          .then((data) => state.Myplaylist.push(data)
+
+         }
+        // this.$store.commit("InsertResults", datatest[0].content);
+      }
+
 
   }
 })
