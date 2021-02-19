@@ -8,19 +8,16 @@
 
     <vs-dialog v-model="activeShare">
       <template #header>
-        <h4>Spellista</h4>
+        <h4>Lägg till i spellista</h4>
       </template>
       <div>
-        <!-- <vs-input v-model="input" block > -->
-        <!-- </vs-input> -->
-        <!-- <vs-button @click=" AddPlaylist" color= "#42b983" -->
-
-        <!-- >
-    Lägg till
-    </vs-button> -->
+        <vs-select placeholder="Välj"  v-model="value1" @change="AddToPlaylist()">
+        <vs-option :key="tr.PlaylistId" v-for="tr in this.$store.state.Playlists" :value="tr.PlaylistId"  >
+          {{tr.Name}}
+        </vs-option>
+      </vs-select>
       </div>
     </vs-dialog>
-
     <div class="playerDiv" style="margin-top: 500px; padding: 0px;">
       <!-- <div id='video' v-if="activePlayer">
     <iframe src="https://www.youtube.com/embed/RpRpyCJmL1s"
@@ -56,7 +53,7 @@
             <i class="fa fa-step-forward"></i>
           </vs-button>
           <vs-button color="#42b983" @click="OpenDialog"> <i class="fa fa-share"></i> </vs-button>
-          <vs-button color="#42b983"> <i class="fa fa-heart"></i> </vs-button>
+          <vs-button color="#42b983" @click="activeShare = !activeShare"> <i class="fa fa-heart"></i> </vs-button>
           <vs-button color="#42b983" @click="test">
             <i class="fa fa-expand"></i>
           </vs-button>
@@ -75,8 +72,9 @@ export default {
   },
   data() {
     return {
+      value1: '',
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         controls: 0,
       },
       id: "",
@@ -96,15 +94,22 @@ export default {
     };
   },
   methods: {
+    AddToPlaylist: async function (){
+            await fetch("http://localhost:3000/api/playlist/add/"+ this.value1 + "/" + this.$store.state.SearchResult[this.$store.state.CurrentVideo], {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          },
+        body: JSON.stringify(this.$store.state.SearchResult[this.$store.state.CurrentVideo]),
+      }).then((response) => response);
+    },
     OpenDialog(){
-     alert("Det här är din delningslänk: " + 'http://localhost:8081/Search/P8krIGIbiWo');
+     alert("Det här är din delningslänk: " + 'http://localhost:8081/Search/' + this.id);
     },
    onVideoPlaying: async function() {
-     console.log("kör")
          let Length = await this.player.getDuration();
          this.VideoLength = Math.round(Length);
          if( await this.player.getPlayerState() === 1){
-           console.log("row100");
            let tete = 0;
          let processId = setInterval(() => {
            this.player.getCurrentTime().then((time) => {
@@ -163,7 +168,6 @@ export default {
 
   },
   seek:async function(time){
-     console.log(time);
    await this.player.seekTo(time,true)
   },
     onSliderChange(time) {
@@ -180,18 +184,17 @@ export default {
   watch:{
 
 CurrentVideo: function (val, oldVal) {
-      console.log('new: %s, old: %s', val, oldVal)
     }
   },
   mounted: function(){
     if(this.$route.params.songid != undefined){
-      console.log(this.$route.params.songid);
       this.id = this.$route.params.songid;
       this.PlayTimeOut();
     }
     this.$root.$on('player', () => {
        this.id = this.$store.state.CurrentPlaylist[this.$store.state.CurrentVideo];
             this.player.playVideo();
+            
             
         });
   

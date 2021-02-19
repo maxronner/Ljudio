@@ -137,6 +137,7 @@ export default {
         .then((data) => {
           if(data.loggedIn == true){
             sessionStorage.setItem("LoggedIn","true");
+            sessionStorage.setItem("Userid",data.user.id);
           this.$store.state.LoggedIn = true;
           sessionStorage.setItem("UserName",data.user.first_name);
          

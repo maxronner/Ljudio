@@ -13,7 +13,8 @@ export default new Vuex.Store({
     CurrentVideo: 0,
     LoggedInUsername:sessionStorage.getItem("UserName"),
     LoggedIn:false,
-    CurrentVideoId: ""
+    CurrentVideoId: "",
+    Playlists:[],
   },
   mutations: {
     SetUsername(state, payload){
@@ -39,7 +40,6 @@ export default new Vuex.Store({
         
        });
        state.CurrentPlaylist = NewPlaylist;
-       console.log(this.state.CurrentPlaylist)
     },
     ChangeSelectedVideo(state,index){
       state.SelectedVideo = index;
