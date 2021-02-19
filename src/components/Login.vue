@@ -136,8 +136,11 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           if(data.loggedIn == true){
+            sessionStorage.setItem("LoggedIn","true");
+            sessionStorage.setItem("Userid",data.user.id);
           this.$store.state.LoggedIn = true;
-          this.$store.state.LoggedInUsername = data.user.first_name;
+          sessionStorage.setItem("UserName",data.user.first_name);
+         
           this.active4 = this.$store.state.LoggedIn;
           router.push("Search");
           }
@@ -182,6 +185,7 @@ export default {
           .then(response => response.json())
           .then(data => {
              this.$store.state.LoggedIn = false;
+             sessionStorage.setItem("LoggedIn","false");
                     console.log(this.$store.state.LoggedIn);
                     router.push("/");
           console.log('Success:', data);
