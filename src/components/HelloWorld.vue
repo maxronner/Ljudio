@@ -1,45 +1,59 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <Login style="float: right; margin-top: 20px"></Login>
+    <div class="grid">
+      <SearchResults></SearchResults>
+    </div>
+    <!-- <v-tour name="myTour" :steps="steps"></v-tour> -->
   </div>
 </template>
-
 <script>
+// eslint-disable-next-line no-unused-vars
+import Login from "../components/Login";
+import SearchResults from "../components/SearchResults";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
-}
-</script>
+    msg: String,
+  },
+  components: {
+    Login,
+    SearchResults,
+  },
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+  data() {
+    return {
+      active: false,
+      test: false,
+      num: 2,
+      num2: 10,
+      steps: [
+        {
+          target: "#v-step-0", // We're using document.querySelector() under the hood
+          content: `Discover <strong>Vue Tour</strong>!`,
+        },
+        {
+          target: "#v-step-1",
+          content: "An awesome plugin made with Vue.js!",
+        },
+        {
+          target: "#v-step-2",
+          content:
+            "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
+          params: {
+            placement: "top",
+          },
+        },
+      ],
+    };
+  },
+  mounted: function () {
+    if(sessionStorage.getItem("LoggedIn") == undefined){
+      this.$router.replace("/")
+    }
+  },
+};
+</script>
 <style scoped>
 h3 {
   margin: 40px 0 0;

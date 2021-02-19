@@ -1,28 +1,90 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <div class="grid">
+      <vs-row id="main" style="width:100%">
+        <vs-col vs-type="flex" v-if="$store.state.LoggedIn == true"  vs-justify="center" vs-align="center" w=2 style="height:100%;">
+          <!-- SIDEBAR -->
+           <vs-sidebar id="sidebar"
+        absolute
+        square
+        open
+        >
+
+        <Search2/>
+        <playlist-component/>
+        <Player></Player>
+
+            
+
+           </vs-sidebar>
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" style="height:100%;" vs-align="center"  w="9" >
+          <router-view/>
+        </vs-col>
+       
+      </vs-row>
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Player from './components/player'
+
+import PlaylistComponent from './components/PlaylistComponent'
+import Search2 from './components/Search2.vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+   components: {
+     Player,
+     PlaylistComponent,
+      Search2
+   },
+   data(){
+     return{
+       LoggedIn:sessionStorage.loggedIn,
+     }
+   },
+    mounted: function () {
+       if(sessionStorage.getItem("LoggedIn") == "true"){
+         this.$store.state.LoggedIn = true;
+       }else{
+         this.$store.state.LoggedIn = false;
+       }
+       window.SearchResult = [];
+     }
 }
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #42b983;
+  background-color: #262729;
+ 
+}
+#sidebar{
+  background-color:#18181a;
+  width:120%
+}
+#main{
+  height: 100vh;
+  width: 100vh;
+}
+body{
+   margin: 0 auto;
+  padding: 0;
+}
+#nav {
+  padding: 30px;
+}
+#nav a {
+  font-weight: bold;
   color: #2c3e50;
-  margin-top: 60px;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
